@@ -1,10 +1,10 @@
 CREATE TABLE members
 (
-    `mem_id`        VARCHAR(20)    NOT NULL    COMMENT '회원 아이디', 
-    `mem_pw`        VARCHAR(20)    NOT NULL    COMMENT '회원 비밀번호', 
-    `mem_name`      VARCHAR(30)    NOT NULL    COMMENT '회원 이름', 
-    `mem_email`     VARCHAR(60)    NOT NULL    COMMENT '회원 이메일', 
-    `mem_joindate`  DATETIME       NOT NULL    COMMENT '회원 가입일자', 
+    mem_id        VARCHAR(20)    NOT NULL    COMMENT '회원 아이디', 
+    mem_pw        VARCHAR(20)    NOT NULL    COMMENT '회원 비밀번호', 
+    mem_name      VARCHAR(30)    NOT NULL    COMMENT '회원 이름', 
+    mem_email     VARCHAR(60)    NOT NULL    COMMENT '회원 이메일', 
+    mem_joindate  DATETIME       NOT NULL    COMMENT '회원 가입일자', 
      PRIMARY KEY (mem_id)
 );
 
