@@ -21,22 +21,7 @@ public class YoutubeController {
 	
 	
 	
-	@RequestMapping("/First.do")
-	public String First(Model model) {
-		
-		return "First";
-	}
-	
-	@RequestMapping("/index_1")
-	public String index_1(Model model) {
-		
-		return "index_1";
-	}
-	@RequestMapping("/index_2")
-	public String index_2(Model model) {
-		
-		return "index_2";
-	}
+
 	
 	
 	
