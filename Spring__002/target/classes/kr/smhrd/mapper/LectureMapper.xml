@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="kr.smhrd.mapper.LectureMapper">
+
+	<select id="getList" resultType="kr.smhrd.entity.lectures" >
+		select * from (select * from toor.lectures where lec_lang = 'Python') imsi  left JOIN toor.favorites fav 
+		on imsi.lec_id = fav.lec_id and fav.mem_id='admin';
+	</select>
+		
+	<select id="getList_2" resultType="kr.smhrd.entity.lectures" >
+		select * from (select * from toor.lectures where lec_lang = 'Java') imsi  left JOIN toor.favorites fav 
+		on imsi.lec_id = fav.lec_id and fav.mem_id='admin';
+	</select>
+	
+	<select id="getList_3" resultType="kr.smhrd.entity.lectures" >
+		select * from (select * from toor.lectures where lec_lang = 'JavaScript') imsi  left JOIN toor.favorites fav 
+		on imsi.lec_id = fav.lec_id and fav.mem_id='admin';
+	</select>
+	
+	<select id="getList_4" resultType="kr.smhrd.entity.lectures" >
+		select * from (select * from toor.lectures where lec_lang = '머신러닝') imsi  left JOIN toor.favorites fav 
+		on imsi.lec_id = fav.lec_id and fav.mem_id='admin';
+	</select>
+	
+	<select id="getList_5" resultType="kr.smhrd.entity.lectures" >
+		select * from (select * from toor.lectures where lec_lang = '딥러닝') imsi  left JOIN toor.favorites fav 
+		on imsi.lec_id = fav.lec_id and fav.mem_id='admin';
+	</select>
+	
+	<select id = "MyPage_select" resultType="kr.smhrd.entity.lectures">
+		select * from toor.lectures lec left join toor.favorites fav  on  
+		lec.lec_id = fav.lec_id and fav.mem_id='admin'
+	</select> 
+	
+	
+	
+	
+	
+
+</mapper>

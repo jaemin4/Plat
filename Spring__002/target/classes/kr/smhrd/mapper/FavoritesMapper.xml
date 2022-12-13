@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="kr.smhrd.mapper.FavoritesMapper">
+
+	<select id="f_select_lec"  resultType="kr.smhrd.entity.favorites" >
+        select lec_id from toor.favorites where lec_id = #{lec_id}
+	</select>
+	
+	 <insert id="f_insert"  parameterType="kr.smhrd.entity.favorites">
+        insert into toor.favorites(mem_id,lec_id) values("admin",#{lec_id})
+	</insert> 
+	
+	<delete id = "f_delete" parameterType="kr.smhrd.entity.favorites">
+		delete from toor.favorites where mem_id = "admin" and lec_id = #{lec_id}
+	</delete>
+	
+
+	
+	
+
+</mapper>
