@@ -9,12 +9,12 @@
 	<!-- DB연결 작업(HikariCP : 히카리CP) -->
 	
 
-	<bean id = "hikariConfig" class = "com.zaxxer.hikari.HikariConfig">
-		<property name="driverClassName" value ="com.mysql.jdbc.Driver" />
-		<property name="jdbcUrl" value = "jdbc:mysql://project-db-stu.ddns.net:3307/toor"/>
-		<property name="username" value = "toor"/>
-		<property name="password" value = "toor"/>
-	</bean>
+   <bean id = "hikariConfig" class = "com.zaxxer.hikari.HikariConfig">
+      <property name="driverClassName" value ="com.mysql.jdbc.Driver" />
+      <property name="jdbcUrl" value = "jdbc:mysql://project-db-stu.ddns.net:3307/toor"/>
+      <property name="username" value = "toor"/>
+      <property name="password" value = "toor"/>
+   </bean>
 	
 	<bean id = "dataSource" class = "com.zaxxer.hikari.HikariDataSource">
 		<constructor-arg ref = "hikariConfig"/>
