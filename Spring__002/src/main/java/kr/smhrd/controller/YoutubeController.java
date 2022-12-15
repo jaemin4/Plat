@@ -17,6 +17,11 @@ public class YoutubeController {
 	public String index() {
 		return "index";
 	}
+
+	@RequestMapping("/index2.do")
+	public String index2() {
+		return "index2";
+	}
 	
 	
 
