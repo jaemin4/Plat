@@ -9,15 +9,21 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <link rel="stylesheet" href="./resources/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">	
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="./resources/css/perfect-scrollbar.min.css">
-<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&amp;subset=devanagari,latin-ext" rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&amp;subset=devanagari,latin-ext"
+	rel="stylesheet">
 
-	
-<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-	
+
+<link
+	href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+	rel="stylesheet">
+
 
 <link rel="stylesheet" href="./resources/css/style.css">
 <script src="./resources/JS/jquery.js"></script>
@@ -60,7 +66,6 @@
 
 body {
 	flex-direction: column;
-
 }
 
 .cards {
@@ -130,10 +135,10 @@ h1 {
 
 		<div class="header">
 			<ul class="tap_menu">
-				<li><a href = "Join_login.do">로그인/회원가입</a></li>
-				<li><a href = "Python_1.do">강의실</a></li>
-				<li><a href = "#">Home<a></li>
-				<li><a href = "MyPage.do">즐겨찾기</a></li>
+				<li><a href="Join_login.do">로그인/회원가입</a></li>
+				<li><a href="Python_1.do">강의실</a></li>
+				<li><a href="#">Home<a></li>
+				<li><a href="MyPage.do">즐겨찾기</a></li>
 			</ul>
 
 
@@ -142,25 +147,24 @@ h1 {
 		<div class="left">
 			<div class="sidebar">
 				<nav id="sidebar">
-					<div class="sidebar-header"></div>
-				
-					<ul>
-						<li class="active">
-						<a href="#">${m_name}</a>
-						<a href="#Python" data-toggle="collapse"
-							aria-expanded="false">Python</a>
-							
-							<nav>
-								<ul class="collapse list-unstyled" id="Python">
-									<li class="nav-item"><a class="nav-link" href="#section1">연산자</a></li>
-									<li class="nav-item"><a class="nav-link" href="#section2">조건문</a></li>
-									<li class="nav-item"><a class="nav-link" href="#section3">반복문</a></li>
-								</ul>
+					<div class="sidebar-header">
+						<h1 class="site-title">
 
-							</nav>
-							<a href="Java_1.do">Java</a> <a href="JS_1.do">JS</a> <a
-							href="ai_1.do">머신러닝</a> <a href="ai_2.do">딥러닝</a></li>
+							
+						</h1>
+					</div>
+					<ul class="list-unstyled components">
+						<p>
+							<a href="#">Let Study</a>
+						</p>
+						<li class="active"><a href="Python_1.do">Python</a></li>
+						<li><a href="Java_1.do">Java</a> <a href="JS_1.do">JS</a> <a
+							href="ai_1.do">머신러닝</a> <a href="ai_2.do">딥러닝</a>
 					</ul>
+					<div class="sidebar-footer">
+	
+
+					</div>
 				</nav>
 
 			</div>
