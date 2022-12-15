@@ -72,7 +72,7 @@ body {
 	width: 100%;
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: space-around;
+	
 }
 
 .card {
@@ -174,6 +174,8 @@ h1 {
 
 		<div class="right">right</div>
 		<div class="main1">
+		
+		<div class = "main_header">
 			<div id="section1" class="container-fluid bg-secondary"
 				style="padding-top: 70px; padding-bottom: 70px">
 				<h3>Chapter1</h3>
