@@ -206,8 +206,6 @@ h1 {
 						<c:forEach var="vo" items="${list}">
 							<c:if test="${vo.lec_grammar=='조건문'}">
 								<div class="col-6 col-md-4">
-
-
 									<div class="card">
 										<h2 class="card-title">Seal</h2>
 										<img src="${vo.lec_thumb}" alt="">
@@ -215,7 +213,6 @@ h1 {
 										<span class="btn btn-primary" id="${vo.lec_id}"
 											onclick="BookMark(this.id)">${vo.mem_id eq null ? '☆' : '★'}</span>
 									</div>
-
 								</div>
 
 							</c:if>
