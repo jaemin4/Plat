@@ -1,23 +1,207 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <c:set var="cpath" value="${pageContext.request.contextPath}" />
-
 <!DOCTYPE html>
 <html>
 <head>
-
-
-<!-- Website title -->
-<title>Freetitle</title>
-<!-- CSS Styles -->
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <link rel="stylesheet" href="./resources/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="./resources/css/perfect-scrollbar.min.css">
-<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&amp;subset=devanagari,latin-ext" rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&amp;subset=devanagari,latin-ext"
+	rel="stylesheet">
+
+
+<link
+	href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+	rel="stylesheet">
+
+
 <link rel="stylesheet" href="./resources/css/style.css">
+<script src="./resources/JS/jquery.js"></script>
+<script src="./resources/JS/tether.min.js"></script>
+<script src="./resources/JS/bootstrap.min.js"></script>
+<script src="./resources/JS/perfect-scrollbar.min.js"></script>
+<script src="./resources/JS/common.js"></script>
+
+<script src="./resources/JS/BookMark.js"></script>
+
+<script>
+	function BookMark(this_id) {
+		let spanTag = document.getElementById(this_id);
+		console.log(this_id)
+
+		$.ajax({
+			url : "${cpath}/jjim.do",
+			type : "get",
+			data : {
+				"this_id" : this_id
+			},
+			success : console.log("success"),
+			error : console.log("error")
+		});
+
+		if (spanTag.innerText == '★') {
+			spanTag.innerText = '☆'
+		} else {
+			spanTag.innerText = '★'
+		}
+	}
+</script>
+
+<style>
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-familly: "Poppins", sans-serif;
+}
+
+.container_1 {
+	position: relative;
+	width: 100%;
+	margin-left:18%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-warp: warp;
+	
+}
+
+.container_1 .card {
+	position: relative;
+	width:30%;
+	height: 30%;
+	background-color: #fff;
+	margin: 20px;
+	padding: 20px;
+	display: flex;
+	flex-direction: column;
+	box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+	transition: 0.3s ease-in-out;
+	border-radius: 15px;
+}
+
+.container_1 .card:hover {
+	height: 50%;
+	overflow:scroll;
+	
+}
+
+.container_1 .card .image {
+	position: relative;
+	width: 260px;
+	height: 260px;
+	top: -40%;
+	left: 8px;
+	box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+	z-index: 1;
+}
+
+.container_1 .card .image img {
+	max-width: 70%;
+	border-radius: 15px;
+}
+
+.container_1 .card .content {
+	position: relative;
+	top: -140px;
+	padding: 10px 15px;
+	color: #111;
+	text-align: center;
+	visibility: hidden;
+	opacity: 0;
+	transition: 0.3s ease-in-out;
+}
+
+.container_1 .card:hover .content {
+	margin-top: 30px;
+	visibility: visible;
+	opacity: 1;
+	transition-delay: 0.2s;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Oswald:500');
+
+.thx{
+  position: fixed;
+  left:50%;
+  transform:translateX(-50%);
+  bottom: 15px;
+}
+nav{
+  width: 100%;
+  top:50px;
+  margin-top:40px;
+  text-align:center;
+}
+nav a{
+  font-family: 'Oswald', sans-serif;
+  font-weight:500;
+  text-transform:uppercase;
+  text-decoration:none;
+  color:#16151b;
+  margin:0 15px;
+  font-size:16px;
+  letter-spacing:1px;
+  position:relative;
+  display:inline-block;
+}
+nav a:before{
+  content:'';
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  background:#16151b;
+  top:47%;
+  animation:out 0.2s cubic-bezier(1, 0, 0.58, 0.97) 1 both;
+}
+nav a:hover:before{
+
+}
+@keyframes in{
+  0%{
+    width: 0;
+    left:0;
+    right:auto;
+  }
+  100%{
+    left:0;
+    right:auto;
+    width: 100%;
+  }
+}
+@keyframes out{
+  0%{
+    width:100%;
+    left: auto;
+    right: 0;
+  }
+  100%{
+    width: 0;
+    left: auto;
+    right: 0;
+  }
+}
+@keyframes show{
+  0%{
+    opacity:0;
+    transform:translateY(-10px);
+  }
+  100%{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
 <style>
 :root {
   --surface-color: #fff;
@@ -140,85 +324,49 @@ body {
 }    
 </style>
 
-
-
-
-
-
+</style>
 
 
 </head>
 <body>
 
-<!-- BEGIN Wrapper -->
-<div class="wrapper">
+	<div class="container">
+		<div class="header">
+			<nav>
+			  <a href="index.do">Home</a>
+			  <a href="Python_1.do">Lectures</a>
+			  <a href="MyPage.do">Favorites</a>
+			  <a href="#">About</a>
+			</nav>
 
-	<!-- BEGIN Sidebar -->
-	<nav id="sidebar">
-	<div class="sidebar-header">
-		<h1 class="site-title">
-      <div class="form-group">
-        <label for="usr">ID:</label>
-        <input type="text" class="form-control" id="usr">
-      </div>
-      <div class="form-group">
-        <label for="pwd">Password:</label>
-        <input type="password" class="form-control" id="pwd">
-      </div>
-		<img class="imglogo" src="./resources/images/logo.png"><br/>
-		좋댓구알</h1>
-	</div>
-	<ul class="list-unstyled components">
-		<p><a href = "#">Let Study</a></p>
-		<li class="active">
-			<a href="Python_1.do">Python</a>
-		</li>
-		<li>
 
-		<a href="Java_1.do">Java</a>
-		<a href="JS_1.do">JS</a>
-		<a href="ai_1.do">머신러닝</a>
-		<a href="ai_2.do">딥러닝</a>
-		
-	</ul>
-	<div class="sidebar-footer">
-		<p class="social-icons">
-			<a target="_blank" href="#"><i class="fa fa-youtube"></i></a>
-			<a target="_blank" href="#"><i class="fa fa-soundcloud"></i></a>
-			<a target="_blank" href="#"><i class="fa fa-facebook"></i></a>
-			<a target="_blank" href="#"><i class="fa fa-twitter"></i></a>
-			<a target="_blank" href="#"><i class="fa fa-google-plus"></i></a>
-		</p>
-		<p>
-			Shared by <i class="fa fa-love"></i><a href="https://bootstrapthemes.co">BootstrapThemes</a>
 
-		</p>
-	</div>
-	</nav>
-  <!-- END Sidebar -->
-
-  <!-- BEGIN Responsive Menu Button -->
-	<nav id="sidebar-responsive" class="navbar navbar-default">
-	<div class="container-fluid">
-		<div class="navbar-header">
-			<!-- Your website title here -->
-      <h1 class="mobile-title">Mandela Effect</h1>
-			<button type="button" id="sidebarCollapse" class="navbar-btn pull-right">
-			<span></span>
-			<span></span>
-			<span></span>
-			</button>
-			<div class="clearfix">
-			</div>
 		</div>
-	</div>
-	</nav>
-  <!-- End Responsive Menu Button -->
+		<div class="left">
+			<div class="sidebar">
+				<nav id="sidebar">
+					<div class="sidebar-header">
+						<h1 class="site-title"></h1>
+					</div>
+					<ul class="list-unstyled components">
+						<p>
+							<a href="#">Let Study</a>
+						</p>
+						<li class="active"><a href="Python_1.do">Python</a></li>
+						<li><a href="Java_1.do">Java</a> <a href="JS_1.do">JS</a> <a
+							href="ai_1.do">머신러닝</a> <a href="ai_2.do">딥러닝</a>
+					</ul>
+					<div class="sidebar-footer"></div>
+				</nav>
+
+			</div>
 
 
-	<!-- BEGIN Page Content -->
-	<div id="content">
-    <div class="card-columns">
+		</div>
+
+		<div class="right">right</div>
+		<div class="main1">
+			<div class="card-columns">
 		<ul class="cards">
 		  <li>
 		    <a href="" class="card">
@@ -370,19 +518,18 @@ body {
 		  </li>     
 		</ul>
     </div>
+		
+				
+
+
+		</div>
+
+
+
+
+		<div class="main2"></div>
+
+
 	</div>
-  <!-- END Page Content -->
-
-</div>
-<!--END Wrapper -->
-
-<!-- BEGIN Scripts -->
-<script src="./resources/JS/jquery.js"></script>
-<script src="./resources/JS/tether.min.js"></script>
-<script src="./resources/JS/bootstrap.min.js"></script>
-<script src="./resources/JS/perfect-scrollbar.min.js"></script>
-<script src="./resources/JS/common.js"></script>
-<!-- END Scripts -->
-
 </body>
 </html>

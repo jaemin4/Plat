@@ -23,46 +23,60 @@
     grid-template-rows: 1fr 11fr 11fr 4fr;
     grid-template-columns: 1fr 5fr 1fr;
     
+    
 }
 .header{
    grid-area: header;
-   background-color:pink;
    height:50%;
+   margin-bottom:5%;
+   margin-left:70%;
    
 }
-.header>ul{
+.header>nav{
     display: flex;
     justify-content: flex-end;
-    margin-top: 5px;
+    margin-top: 12%;
 
     
 
 }
-.header>ul>li{
+.header>nav>a{
     margin-left: 64px;
-
+    
+}
+.header>nav>a:nth-child(1){
+    margin-right: 700px;
+    margin-top:auto;
+    font-size:30px;
+    
+	
     
 }
 
 
 .left{
     grid-area:left;
-  
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color:yellow;
+    margin-left: 10%;
+   
 
     
 
 }
 .right{
     grid-area:right;
-    background-color:green;
+ 
+    margin:0;
+    padding:0;
    
 }
 .main1{
+	margin-left:10%;
     grid-area:main1;
+    position: relative;
+  
 
     
     
@@ -244,6 +258,7 @@ ul ul a {
 	min-height:100vh;
 	transition:all 0.3s;
 	margin-left:260px;
+	
 }
 
 h1.site-title {
