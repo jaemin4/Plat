@@ -11,8 +11,6 @@
 <title>Insert title here</title>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
-
 <link rel="stylesheet" href="./resources/css/bootstrap.min.css">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -20,11 +18,14 @@
 <link
 	href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&amp;subset=devanagari,latin-ext"
 	rel="stylesheet">
-<link rel="stylesheet" href="./resources/css/style.css">
+
+
 <link
 	href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
 	rel="stylesheet">
 
+
+<link rel="stylesheet" href="./resources/css/style.css">
 <script src="./resources/JS/jquery.js"></script>
 <script src="./resources/JS/tether.min.js"></script>
 <script src="./resources/JS/bootstrap.min.js"></script>
@@ -57,89 +58,232 @@
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css?family=Oswald:500');
+.thx{
+  position: fixed;
+  left:70%;
+  transform:translateX(-50%);
+  bottom: 15px;
+}
+nav{
+  width: 100%;
+  top:50px;
+  margin-top:40px;
+  text-align:center;
+}
+nav a{
+  font-family: 'Oswald', sans-serif;
+  font-weight:500;
+  text-transform:uppercase;
+  text-decoration:none;
+  color:#16151b;
+  margin:0 15px;
+  font-size:16px;
+  letter-spacing:1px;
+  position:relative;
+  display:inline-block;
+}
+nav a:before{
+  content:'';
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  background:#16151b;
+  top:47%;
+  animation:out 0.2s cubic-bezier(1, 0, 0.58, 0.97) 1 both;
+}
+nav a:hover:before{
+
+}
+@keyframes in{
+  0%{
+    width: 0;
+    left:0;
+    right:auto;
+  }
+  100%{
+    left:0;
+    right:auto;
+    width: 100%;
+  }
+}
+@keyframes out{
+  0%{
+    width:100%;
+    left: auto;
+    right: 0;
+  }
+  100%{
+    width: 0;
+    left: auto;
+    right: 0;
+  }
+}
+@keyframes show{
+  0%{
+    opacity:0;
+    transform:translateY(-10px);
+  }
+  100%{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+:root {
+  --surface-color: #fff;
+  --curve: 40;
+}
+
 * {
-	margin: 0;
-	padding: 0;
-	font-family: "Roboto", sans-serif;
+  box-sizing: border-box;
 }
 
 body {
-	flex-direction: column;
-	background-color: #34495e;
+  font-family: 'Noto Sans JP', sans-serif;
+  background-color: #fef8f8;
 }
 
 .cards {
-	width: 100%;
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-around;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin: 4rem 5vw;
+  padding: 0;
+  list-style-type: none;
 }
 
 .card {
-	margin: 40px;
-	position: relative;
-	max-width: 250px;
-	max-height: 350px;
-	box-shadow: 0 40px 60px -6px black;
+  position: relative;
+/*   display: block; */
+  height: 100%;  
+  border-radius: calc(var(--curve) * 1px);
+  overflow: hidden;
+  text-decoration: none;
 }
 
-.card-title {
-	display: block;
-	text-align: center;
-	color: #fff;
-	background-color: #6184a8;
-	padding: 2%;
-	border-top-right-radius: 4px;
-	border-top-left-radius: 4px;
+.card__image {      
+  width: 100%;
+  height: auto;
 }
 
-.card img {
-	width: 100%;
-	height: 98%;
-	object-fit: cover;
-	display: block;
-	position: relative;
+.card__overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;      
+  border-radius: calc(var(--curve) * 1px);    
+  background-color: var(--surface-color);      
+  transform: translateY(100%);
+  transition: .2s ease-in-out;
 }
 
-.card-desc {
-	display: block;
-	font-size: 0.7rem;
-	position: absolute;
-	height: 0;
-	top: 0;
-	opacity: 0;
-	padding: 18px 8%;
-	background-color: pink;
-	overflow-y: scroll;
-	transition: 0.8s ease;
+.card:hover .card__overlay {
+  transform: translateY(0);
 }
 
-.card:hover .card-desc {
-	opacity: 1;
-	height: 86%;
+.card__header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 2em;
+  padding: 2em;
+  border-radius: calc(var(--curve) * 1px) 0 0 0;    
+  background-color: var(--surface-color);
+  transform: translateY(-100%);
+  transition: .2s ease-in-out;
 }
 
-h1 {
-	font-size: 2.8rem;
-	color: #fff;
-	margin: 40px 0 20px 0;
-	text-align: center;
+.card__arc {
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  bottom: 100%;
+  right: 0;      
+  z-index: 1;
 }
+
+.card__arc path {
+  fill: var(--surface-color);
+  d: path("M 40 80 c 22 0 40 -22 40 -40 v 40 Z");
+}       
+
+.card:hover .card__header {
+  transform: translateY(0);
+}
+
+.card__thumb {
+  flex-shrink: 0;
+  width: 50px;
+  height: 50px;      
+  border-radius: 50%;      
+}
+
+.card__title {
+  font-size: 1em;
+  margin: 0 0 .3em;
+  color: #6A515E;
+}
+
+.card__tagline {
+  /* display: block; */
+  margin: 1em 0;
+  font-family: "MockFlowFont";  
+  font-size: .8em; 
+  color: #D7BDCA;  
+}
+
+.card__status {
+  font-size: .8em;
+  color: #D7BDCA;
+}
+
+.card__description {
+  padding: 0 2em 2em;
+  margin: 0;
+  color: #D7BDCA;
+  font-family: "MockFlowFont";   
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}    
 </style>
+
+
+
+<script>
+
+function GoDetail_page(this_id){
+	alert(this_id);
+
+	$.ajax({
+		url:"VideoPage.do",
+		type:"get",
+		data:{"this_id" : this_id},
+		success:{}
+	});
+	window.location.href = "VideoPage.do";
+}
+
+
+</script>
 
 
 </head>
 <body>
 
 	<div class="container">
-
 		<div class="header">
-			<ul class="tap_menu">
-				<li><a href = "Join_login.do">로그인/회원가입</a></li>
-				<li><a href = "Python_1.do">강의실</a></li>
-				<li><a href = "#">Home<a></li>
-				<li><a href = "MyPage.do">즐겨찾기</a></li>
-			</ul>
+			<nav>
+			  
+			  <a href="JS_1.do">JS</a>
+			  <a href="LandingPage.do">Home</a>
+			  <a href="Python_1.do">Lectures</a>
+			  <a href="MyPage.do">Favorites</a>
+			  <a href="#">About</a>
+			</nav>
 
 
 
@@ -147,26 +291,18 @@ h1 {
 		<div class="left">
 			<div class="sidebar">
 				<nav id="sidebar">
-					<div class="sidebar-header">header</div>
-					<ul>
-						<li>
-						    <a href="Python_1.do">Python</a> 
-						    <a href="Java_1.do">Java</a> 
-							<li class="active"><a href="#JS" data-toggle="collapse" aria-expanded="false">JS</a>
-							<nav>
-								<ul class="collapse list-unstyled" id="JS">
-									<li class="nav-item"><a class="nav-link" href="#section1">연산자</a></li>
-									<li class="nav-item"><a class="nav-link" href="#section2">조건문</a></li>
-									<li class="nav-item"><a class="nav-link" href="#section3">반복문</a></li>
-								</ul>
-							</nav>
-							</li>
-						<li>
-							
-							<a href="ai_1.do">머신러닝</a> 
-							<a href="ai_2.do">딥러닝</a>
-						</li>
+					<div class="sidebar-header">
+						<h1 class="site-title"></h1>
+					</div>
+					<ul class="list-unstyled components">
+						<p>
+							<a href="#">Let Study</a>
+						</p>
+						<li class="active"><a href="Python_1.do">Python</a></li>
+						<li><a href="Java_1.do">Java</a> <a href="JS_1.do">JS</a> <a
+							href="ai_1.do">머신러닝</a> <a href="ai_2.do">딥러닝</a>
 					</ul>
+					<div class="sidebar-footer"></div>
 				</nav>
 
 			</div>
@@ -174,105 +310,45 @@ h1 {
 
 		</div>
 
-		<div class="right">right</div>
+		<div class="right"></div>
+		
 		<div class="main1">
-			<div id="section1" class="container-fluid bg-secondary"
-				style="padding-top: 70px; padding-bottom: 70px">
-				<h3>Chapter1</h3>
-				<div class="row" id="Python_section3">
-					<div class="cards">
-						<c:forEach var="vo" items="${list}">
-							<c:if test="${vo.lec_grammar=='연산자'}">
-								<div class="col-6 col-md-4">
-									<div class="card">
-										<h2 class="card-title">Seal</h2>
-										<img src="${vo.lec_thumb}" alt="">
-										<p class="card-desc">${vo.lec_summ}</p>
-										<span class="btn btn-primary" id="${vo.lec_id}"
-											onclick="BookMark(this.id)">${vo.mem_id eq null ? '☆' : '★'}</span>
-									</div>
-								</div>
-							</c:if>
-						</c:forEach>
-					</div>
-				</div>
-			</div>
-
-			<div id="section2" class="container-fluid bg-secondary"
-				style="padding-top: 70px; padding-bottom: 70px">
-				<h3>Chapter2</h3>
-				<div class="row">
-					<div class="col-md-8"></div>
-					<div class="col-6 col-md-4"></div>
-				</div>
-
-				<!-- Columns start at 50% wide on mobile and bump up to 33.3% wide on desktop -->
-				<div class="row">
-					<div class="cards">
-						<c:forEach var="vo" items="${list}">
-							<c:if test="${vo.lec_grammar=='조건문'}">
-								<div class="col-6 col-md-4">
-
-
-									<div class="card">
-										<h2 class="card-title">Seal</h2>
-										<img src="${vo.lec_thumb}" alt="">
-										<p class="card-desc">${vo.lec_summ}</p>
-										<span class="btn btn-primary" id="${vo.lec_id}"
-											onclick="BookMark(this.id)">${vo.mem_id eq null ? '☆' : '★'}</span>
-									</div>
-
-								</div>
-
-							</c:if>
-						</c:forEach>
-					</div>
-				</div>
-			</div>
-
-			<div id="section3" class="container-fluid bg-secondary"
-				style="padding-top: 70px; padding-bottom: 70px">
-				<h3>Chapter3</h3>
-
-
-				<!-- Columns start at 50% wide on mobile and bump up to 33.3% wide on desktop -->
-				<div class="row">
-					<div class="cards">
-						<c:forEach var="vo" items="${list}">
-							<c:if test="${vo.lec_grammar=='반복문'}">
-								<div class="col-6 col-md-4">
-
-									<div class="card">
-										<h2 class="card-title">Seal</h2>
-										<img src="${vo.lec_thumb}" alt="">
-										<p class="card-desc">${vo.lec_summ}</p>
-										<span class="btn btn-primary" id="${vo.lec_id}"
-											onclick="BookMark(this.id)">${vo.mem_id eq null ? '☆' : '★'}</span>
-
-									</div>
-								</div>
-							</c:if>
-						</c:forEach>
-					</div>
-				</div>
-			</div>
-
-
-
-
+	    <div class="card-columns">
+		<ul class="cards">
+		
+		<c:forEach var="vo" items="${list}">
+	<%-- 	<c:if test="${vo.lec_grammar=='연산자'}"> --%>
+		
+		<li>
+		    <a id="${vo.lec_id}" onclick="GoDetail_page(this.id)"  class="card" >
+		      <img src="${vo.lec_thumb}" class="card__image" alt="" />
+		      <div class="card__overlay">
+		        <div class="card__header">
+		          <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>                     
+		          <img class="card__thumb" src="${vo.lec_thumb}" />
+		          <div class="card__header-text">
+		            <h3 class="card__title">${vo.lec_lang}</h3>            
+		            <span class="card__status">${vo.lec_grammar}</span>
+		          </div>
+		        </div>
+		        <p class="card__description">${vo.lec_summ}</p>
+		      </div>
+		    </a>
+		    
+		  </li>
+		  
+		<%--   </c:if> --%>
+		  </c:forEach>
+		  </ul>
+		  </div>
+			
 		</div>
 
-
-
-
+		
 
 		<div class="main2"></div>
-		<div class="footer">footer</div>
+	
 
-	</div>
-
-
-
-
+	
 </body>
 </html>

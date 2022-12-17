@@ -190,7 +190,7 @@ a{color:inherit;text-decoration:none}
 				</div>
 				<div class="hr"></div>
 				<div class="foot-lnk">
-					<a href="#forgot">Forgot Password?</a>
+					<a href="LandingPage.do">Go home?</a>
 				</div>
 			</div>
 			</form>

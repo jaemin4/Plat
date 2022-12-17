@@ -147,8 +147,8 @@ body {
 .cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  margin: 4rem 5vw;
+  gap: 1rem;
+  margin: 2rem 2.5vw;
   padding: 0;
   list-style-type: none;
 }
@@ -262,9 +262,11 @@ function GoDetail_page(this_id){
 		url:"VideoPage.do",
 		type:"get",
 		data:{"this_id" : this_id},
-		success:{}
+		success: function() {
+			  window.location.href = "VideoPage.do";
+		}
 	});
-
+	
 }
 
 
@@ -279,7 +281,7 @@ function GoDetail_page(this_id){
 			<nav>
 			  
 			  <a href="index.do">Python</a>
-			  <a href="index.do">Home</a>
+			  <a href="LandingPage.do">Home</a>
 			  <a href="Python_1.do">Lectures</a>
 			  <a href="MyPage.do">Favorites</a>
 			  <a href="#">About</a>
@@ -320,7 +322,7 @@ function GoDetail_page(this_id){
 	<%-- 	<c:if test="${vo.lec_grammar=='연산자'}"> --%>
 		
 		<li>
-		    <a id="${vo.lec_id}" onclick="GoDetail_page(this.id)"  class="card" >
+		    <a id="${vo.lec_id}" onclick="GoDetail_page(this.id)"  class="card" style = "margin-top">
 		      <img src="${vo.lec_thumb}" class="card__image" alt="" />
 		      <div class="card__overlay">
 		        <div class="card__header">

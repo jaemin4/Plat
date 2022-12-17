@@ -3,11 +3,9 @@
 <mapper namespace="kr.smhrd.mapper.MemberMapper">
 
 	<insert id="register" parameterType="kr.smhrd.entity.members">
-	
 		insert into
 		toor.members(mem_id,mem_pw, mem_name, mem_email,mem_joindate)
 		values(#{mem_id},#{mem_pw},#{mem_name},#{mem_email},"2022-12-13")
-		
 	</insert>
 	<select id="login" resultType="kr.smhrd.entity.members">
 		select * from toor.members where mem_id = #{mem_id} and mem_pw = #{mem_pw}

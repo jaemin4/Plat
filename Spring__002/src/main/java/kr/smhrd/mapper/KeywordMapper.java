@@ -11,7 +11,7 @@ import kr.smhrd.entity.keywords;
 public interface KeywordMapper {
 
 
-	public List<keywords> SelectKeyword(String lec_id); //
+	public List<keywords> SelectKeyword(keywords vo); //
 
 }
 

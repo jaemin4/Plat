@@ -24,13 +24,15 @@ public class KeywordController {
 	private KeywordMapper keywordmapper;
 
 	@RequestMapping("/VideoPage.do")
-	public String SelectKeyword(Model model,@RequestParam Map<String, Object> param) {
+	public String SelectKeyword(Model model,@RequestParam Map<String, Object> param,keywords vo) {
 		
      	String lec_id = (String) param.get("this_id");
+     	List<keywords> list = keywordmapper.SelectKeyword(vo);
      	System.out.println(lec_id);
-     	List<keywords> list = keywordmapper.SelectKeyword(lec_id );
      	System.out.println(list);
-		model.addAttribute("list", list);
+     	model.addAttribute("list", list);
+     	
+	
 		
 		
 		return "VideoPage";

@@ -22,6 +22,12 @@ public class YoutubeController {
 	public String index2() {
 		return "index2";
 	}
+
+	@RequestMapping("/LandingPage.do")
+	public String LandingPage() {
+		return "LandingPage";
+	}
+	
 	
 	
 
