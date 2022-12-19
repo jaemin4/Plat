@@ -262,7 +262,7 @@ function GoDetail_page(this_id){
 		url:"VideoPage.do",
 		type:"get",
 		data:{"this_id" : this_id},
-		success:{}
+		success:console.log("success"),
 	});
 	location.href = "VideoPage.do";
 }

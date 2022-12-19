@@ -73,4 +73,4 @@ insert into lectures values("uecZdRyiFNA","Python","반복문",
 							)
 
         
-select keywords from toor.lectures
+select keywords from toor.lectures;

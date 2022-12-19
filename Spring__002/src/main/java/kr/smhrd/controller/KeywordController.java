@@ -28,8 +28,10 @@ public class KeywordController {
 		
      	String lec_id = (String) param.get("this_id");
      	List<keywords> list = keywordmapper.SelectKeyword(vo);
-     	System.out.println(lec_id);
-     	System.out.println(list);
+     	
+     		System.out.println(lec_id);
+     		System.out.println(list);
+     		
      	model.addAttribute("list", list);
      	
 	
