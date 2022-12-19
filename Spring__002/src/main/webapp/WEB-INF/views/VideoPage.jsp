@@ -144,14 +144,6 @@ body {
   background-color: #fef8f8;
 }
 
-.cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  margin: 4rem 5vw;
-  padding: 0;
-  list-style-type: none;
-}
 
 .card {
   position: relative;
@@ -160,95 +152,27 @@ body {
   border-radius: calc(var(--curve) * 1px);
   overflow: hidden;
   text-decoration: none;
+  width:100%;
 }
 
 .card__image {      
   width: 100%;
   height: auto;
 }
-
-.card__overlay {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 1;      
-  border-radius: calc(var(--curve) * 1px);    
-  background-color: var(--surface-color);      
-  transform: translateY(100%);
-  transition: .2s ease-in-out;
+.row{
+	width:100%;
+}
+#card_body{
+	width:100%;
+	height:12%;
+	overflow:hidden;
 }
 
-.card:hover .card__overlay {
-  transform: translateY(0);
+#card_main{
+	width:100%;
 }
 
-.card__header {
-  position: relative;
-  display: flex;
-  align-items: center;
-  gap: 2em;
-  padding: 2em;
-  border-radius: calc(var(--curve) * 1px) 0 0 0;    
-  background-color: var(--surface-color);
-  transform: translateY(-100%);
-  transition: .2s ease-in-out;
-}
 
-.card__arc {
-  width: 80px;
-  height: 80px;
-  position: absolute;
-  bottom: 100%;
-  right: 0;      
-  z-index: 1;
-}
-
-.card__arc path {
-  fill: var(--surface-color);
-  d: path("M 40 80 c 22 0 40 -22 40 -40 v 40 Z");
-}       
-
-.card:hover .card__header {
-  transform: translateY(0);
-}
-
-.card__thumb {
-  flex-shrink: 0;
-  width: 50px;
-  height: 50px;      
-  border-radius: 50%;      
-}
-
-.card__title {
-  font-size: 1em;
-  margin: 0 0 .3em;
-  color: #6A515E;
-}
-
-.card__tagline {
-  /* display: block; */
-  margin: 1em 0;
-  font-family: "MockFlowFont";  
-  font-size: .8em; 
-  color: #D7BDCA;  
-}
-
-.card__status {
-  font-size: .8em;
-  color: #D7BDCA;
-}
-
-.card__description {
-  padding: 0 2em 2em;
-  margin: 0;
-  color: #D7BDCA;
-  font-family: "MockFlowFont";   
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
-  overflow: hidden;
-}    
 </style>
 
 
@@ -302,13 +226,119 @@ body {
 		<div class="main1">
 
 		
-		<c:forEach var="vo" items="${list}">
+<%-- 		<c:forEach var="vo" items="${list}">
 			<h1>${vo.key_word}</h1>
 			<h1>${vo.key_time}</h1>
 			<h1>${vo.key_script}</h1>
 			<h1>${vo.lec_id}</h1>
-		</c:forEach>
+		</c:forEach> --%>
+			
+			<div class="container d-flex justify-content-center mt-50 mb-50">
+            
+        <div class="row">
+           <div class="col-md-15" id = "card_main">
+            
+                <div class="card card-body" id = "card_body">
+                            <div class="media align-items-center align-items-lg-start text-center text-lg-left flex-column flex-lg-row">
+                                <div class="mr-2 mb-3 mb-lg-0">
+                                    
+                                        <img src="https://i.ytimg.com/vi/_aCuOwF1ZjU/sddefault.jpg" width="150" height="150" alt="">
+                                   
+                                </div>
 
+                                <div class="media-body">
+                                    <h6 class="media-title font-weight-semibold">
+                                        <a href="#" data-abc="true">키워드</a>
+                                    </h6>
+
+                                    <ul class="list-inline list-inline-dotted mb-3 mb-lg-2">
+                                        <li class="list-inline-item"><a href="#" class="text-muted" data-abc="true">Python</a></li>
+                                        <li class="list-inline-item"><a href="#" class="text-muted" data-abc="true">연산자</a></li>
+                                    </ul>
+
+                                    <p class="mb-3">this is a content </p>
+
+                                    <ul class="list-inline list-inline-dotted mb-0">
+                                        <li class="list-inline-item"> <a href="#" data-abc="true">나도코딩</a></li>
+                                        <li class="list-inline-item"><a href="#" data-abc="true"></a></li>
+                                    </ul>
+                                </div>
+
+                                <div class="mt-3 mt-lg-0 ml-lg-3 text-center">
+                                  
+
+                                    <div>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+
+                                    </div>
+
+
+                                    <button type="button" class="btn btn-warning mt-4 text-white"><i class="icon-cart-add mr-2"></i> 즐겨찾기</button>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+
+
+                         <div class="card card-body mt-3" id = "card_body">
+                            <div class="media align-items-center align-items-lg-start text-center text-lg-left flex-column flex-lg-row">
+                                <div class="mr-2 mb-3 mb-lg-0">
+                                    
+                                        <img src="https://i.imgur.com/Aj0L4Wa.jpg" width="150" height="150" alt="">
+                                   
+                                </div>
+
+                                <div class="media-body">
+                                    <h6 class="media-title font-weight-semibold">
+                                        <a href="#" data-abc="true">Apple iPhone XS Max (Gold, 64 GB)</a>
+                                    </h6>
+
+                                    <ul class="list-inline list-inline-dotted mb-3 mb-lg-2">
+                                        <li class="list-inline-item"><a href="#" class="text-muted" data-abc="true">Phones</a></li>
+                                        <li class="list-inline-item"><a href="#" class="text-muted" data-abc="true">Mobiles</a></li>
+                                    </ul>
+
+                                    <p class="mb-3">256 GB ROM | 15.49 cm (6.1 inch) Display 12MP Rear Camera | 15MP Front Camera A12 Bionic Chip Processor | Gorilla Glass with high quality display </p>
+
+                                    <ul class="list-inline list-inline-dotted mb-0">
+                                        <li class="list-inline-item">All items from <a href="#" data-abc="true">Mobile junction</a></li>
+                                        <li class="list-inline-item">Add to <a href="#" data-abc="true">wishlist</a></li>
+                                    </ul>
+                                </div>
+
+                                <div class="mt-3 mt-lg-0 ml-lg-3 text-center">
+                                    <h3 class="mb-0 font-weight-semibold">$612.99</h3>
+
+                                    <div>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+
+                                    </div>
+
+                                    <div class="text-muted">2349 reviews</div>
+
+                                    <button type="button" class="btn btn-warning mt-4 text-white"><i class="icon-cart-add mr-2"></i> 즐겨찾기</button>
+                                </div>
+                            </div>
+                        </div> 
+                        
+
+
+                             
+        </div>                     
+        </div>
+    </div>
+
+		
 			
 		</div>
 

@@ -262,8 +262,7 @@ function GoDetail_page(this_id){
 		url:"VideoPage.do",
 		type:"get",
 		data:{"this_id" : this_id},
-		success: function() {
-			  window.location.href = "VideoPage.do";
+		success: {
 		}
 	});
 	
@@ -280,7 +279,7 @@ function GoDetail_page(this_id){
 		<div class="header">
 			<nav>
 			  
-			  <a href="index.do">Python</a>
+			  <a href="Python_1.do">Python</a>
 			  <a href="LandingPage.do">Home</a>
 			  <a href="Python_1.do">Lectures</a>
 			  <a href="MyPage.do">Favorites</a>
@@ -298,7 +297,7 @@ function GoDetail_page(this_id){
 					</div>
 					<ul class="list-unstyled components">
 						<p>
-							<a href="#">Let Study</a>
+							<a href="#">admin님 환영합니다</a>
 						</p>
 						<li class="active"><a href="Python_1.do">Python</a></li>
 						<li><a href="Java_1.do">Java</a> <a href="JS_1.do">JS</a> <a
@@ -351,6 +350,6 @@ function GoDetail_page(this_id){
 		<div class="main2"></div>
 	
 
-	
+		
 </body>
 </html>

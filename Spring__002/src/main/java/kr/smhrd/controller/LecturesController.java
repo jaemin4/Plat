@@ -67,7 +67,14 @@ public class LecturesController {
 	}
 	
 	
-
+	@RequestMapping("/LecturePage.do")
+	public String Select_Lecture(Model model) {
+		List<lectures>list = lectureMapper.getList_lec();
+		model.addAttribute("list",list);
+		
+		return "LecturePage";
+	}
+	
 	
 	
 	

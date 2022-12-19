@@ -32,7 +32,10 @@
 		lec.lec_id = fav.lec_id and fav.mem_id='admin'
 	</select> 
 	
-	
+	<select id = "getList_lec" resultType="kr.smhrd.entity.lectures">
+		select * from toor.lectures 
+
+	</select> 
 	
 	
 	

@@ -278,7 +278,7 @@ function GoDetail_page(this_id){
 		<div class="header">
 			<nav>
 			  
-			  <a href="ai_1.do">Machine Running</a>
+			  <a href="ai_1.do">Machine</a>
 			  <a href="LandingPage.do">Home</a>
 			  <a href="Python_1.do">Lectures</a>
 			  <a href="MyPage.do">Favorites</a>

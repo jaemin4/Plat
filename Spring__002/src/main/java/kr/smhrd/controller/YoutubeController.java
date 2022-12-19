@@ -28,7 +28,10 @@ public class YoutubeController {
 		return "LandingPage";
 	}
 	
-	
+	@RequestMapping("/Temp2.do")
+	public String TempPage() {
+		return "Temp2";
+	}
 	
 
 	

@@ -17,5 +17,6 @@ public interface LectureMapper {
 	public List<lectures> getList_4();
 	public List<lectures> getList_5();
 	public List<lectures> MyPage_select();
+	public List<lectures> getList_lec();
 }
 

@@ -40,7 +40,7 @@ public class MemberController {
 
 		memberMapper.register(vo); 
 	
-		return "redirect:/index.do";
+		return "redirect:./Python_1.do";
 	}
 	
 	@RequestMapping(value = "/login.do", method = RequestMethod.POST)
@@ -51,7 +51,7 @@ public class MemberController {
 			// 회원인증에 성공~
 			session.setAttribute("m_name", m.getMem_name()); //${m.memName}
 			System.out.println(m.getMem_name());
-			return "redirect:/index.do";
+			return "redirect:./Python_1.do";
 		}
 	
 

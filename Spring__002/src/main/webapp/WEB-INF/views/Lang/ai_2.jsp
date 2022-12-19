@@ -9,8 +9,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <link rel="stylesheet" href="./resources/css/bootstrap.min.css">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -18,277 +18,339 @@
 <link
 	href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&amp;subset=devanagari,latin-ext"
 	rel="stylesheet">
-<link rel="stylesheet" href="./resources/css/style.css">
 
+
+<link
+	href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+	rel="stylesheet">
+
+
+<link rel="stylesheet" href="./resources/css/style.css">
 <script src="./resources/JS/jquery.js"></script>
 <script src="./resources/JS/tether.min.js"></script>
 <script src="./resources/JS/bootstrap.min.js"></script>
 <script src="./resources/JS/perfect-scrollbar.min.js"></script>
 <script src="./resources/JS/common.js"></script>
+
+<script src="./resources/JS/BookMark.js"></script>
+
 <script>
-function BookMark(this_id){
-     let spanTag = document.getElementById(this_id);
-     console.log(this_id)
-     
+	function BookMark(this_id) {
+		let spanTag = document.getElementById(this_id);
+		console.log(this_id)
+
 		$.ajax({
-         	url : "${cpath}/jjim.do",
-         	type:"get",
-			data : {"this_id" : this_id},
-			success: console.log("success"),
-			error:console.log("error")
-         });
-         
-	     if (spanTag.innerText == '★') {
-	         spanTag.innerText = '☆'
-	     }
-	     else {
-	         spanTag.innerText = '★'
-	     }
- }
+			url : "${cpath}/jjim.do",
+			type : "get",
+			data : {
+				"this_id" : this_id
+			},
+			success : console.log("success"),
+			error : console.log("error")
+		});
+
+		if (spanTag.innerText == '★') {
+			spanTag.innerText = '☆'
+		} else {
+			spanTag.innerText = '★'
+		}
+	}
 </script>
+
+<style>
+@import url('https://fonts.googleapis.com/css?family=Oswald:500');
+.thx{
+  position: fixed;
+  left:70%;
+  transform:translateX(-50%);
+  bottom: 15px;
+}
+nav{
+  width: 100%;
+  top:50px;
+  margin-top:40px;
+  text-align:center;
+}
+nav a{
+  font-family: 'Oswald', sans-serif;
+  font-weight:500;
+  text-transform:uppercase;
+  text-decoration:none;
+  color:#16151b;
+  margin:0 15px;
+  font-size:16px;
+  letter-spacing:1px;
+  position:relative;
+  display:inline-block;
+}
+nav a:before{
+  content:'';
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  background:#16151b;
+  top:47%;
+  animation:out 0.2s cubic-bezier(1, 0, 0.58, 0.97) 1 both;
+}
+nav a:hover:before{
+
+}
+@keyframes in{
+  0%{
+    width: 0;
+    left:0;
+    right:auto;
+  }
+  100%{
+    left:0;
+    right:auto;
+    width: 100%;
+  }
+}
+@keyframes out{
+  0%{
+    width:100%;
+    left: auto;
+    right: 0;
+  }
+  100%{
+    width: 0;
+    left: auto;
+    right: 0;
+  }
+}
+@keyframes show{
+  0%{
+    opacity:0;
+    transform:translateY(-10px);
+  }
+  100%{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+:root {
+  --surface-color: #fff;
+  --curve: 40;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  background-color: #fef8f8;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
+  margin: 2rem 2.5vw;
+  padding: 0;
+  list-style-type: none;
+}
+
+.card {
+  position: relative;
+/*   display: block; */
+  height: 100%;  
+  border-radius: calc(var(--curve) * 1px);
+  overflow: hidden;
+  text-decoration: none;
+}
+
+.card__image {      
+  width: 100%;
+  height: auto;
+}
+
+.card__overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;      
+  border-radius: calc(var(--curve) * 1px);    
+  background-color: var(--surface-color);      
+  transform: translateY(100%);
+  transition: .2s ease-in-out;
+}
+
+.card:hover .card__overlay {
+  transform: translateY(0);
+}
+
+.card__header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 2em;
+  padding: 2em;
+  border-radius: calc(var(--curve) * 1px) 0 0 0;    
+  background-color: var(--surface-color);
+  transform: translateY(-100%);
+  transition: .2s ease-in-out;
+}
+
+.card__arc {
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  bottom: 100%;
+  right: 0;      
+  z-index: 1;
+}
+
+.card__arc path {
+  fill: var(--surface-color);
+  d: path("M 40 80 c 22 0 40 -22 40 -40 v 40 Z");
+}       
+
+.card:hover .card__header {
+  transform: translateY(0);
+}
+
+.card__thumb {
+  flex-shrink: 0;
+  width: 50px;
+  height: 50px;      
+  border-radius: 50%;      
+}
+
+.card__title {
+  font-size: 1em;
+  margin: 0 0 .3em;
+  color: #6A515E;
+}
+
+.card__tagline {
+  /* display: block; */
+  margin: 1em 0;
+  font-family: "MockFlowFont";  
+  font-size: .8em; 
+  color: #D7BDCA;  
+}
+
+.card__status {
+  font-size: .8em;
+  color: #D7BDCA;
+}
+
+.card__description {
+  padding: 0 2em 2em;
+  margin: 0;
+  color: #D7BDCA;
+  font-family: "MockFlowFont";   
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}    
+</style>
+
+
+
+<script>
+
+function GoDetail_page(this_id){
+	alert(this_id);
+
+	$.ajax({
+		url:"VideoPage.do",
+		type:"get",
+		data:{"this_id" : this_id},
+		success: function() {
+			  window.location.href = "VideoPage.do";
+		}
+	});
+	
+}
+
+
+</script>
+
+
 </head>
 <body>
 
-	<div class="wrapper">
-		<div class="sidebar" data-color="purple"
-			data-image="assets/img/sidebar-5.jpg">
+	<div class="container">
+		<div class="header">
+			<nav>
+			  
+			  <a href="ai_2.do">Deep</a>
+			  <a href="LandingPage.do">Home</a>
+			  <a href="Python_1.do">Lectures</a>
+			  <a href="MyPage.do">Favorites</a>
+			  <a href="#">About</a>
+			</nav>
 
 
-			<div class="sidebar-wrapper">
+
+		</div>
+		<div class="left">
+			<div class="sidebar">
 				<nav id="sidebar">
 					<div class="sidebar-header">
-						<h1 class="site-title">
-
-							<img class="imglogo" src="./resources/images/logo.png"><br />
-							Summary
-						</h1>
+						<h1 class="site-title"></h1>
 					</div>
 					<ul class="list-unstyled components">
-						<li class="active"><a href="#my_page" data-toggle="collapse"
-							aria-expanded="false">마이페이지</a>
-							<ul class="collapse list-unstyled" id="my_page">
-								<li><a href="MyPage.do">admin</a></li>
-							</ul></li>
-						<li class="active"><a href="Python_1.do">Python</a> <a
-							href="Java_1.do">Java</a></li>
-						<li><a href="JS_1.do">JS</a> <a href="ai_1.do">머신러닝</a> <a
-							href="#ai_2" data-toggle="collapse" aria-expanded="false">딥러닝</a>
-							<nav>
-								<ul class="collapse list-unstyled" id="ai_2">
-									<li class="nav-item"><a class="nav-link" href="#section15">Rnn</a>
-									</li>
-									<li class="nav-item"><a class="nav-link" href="#section25">Cnn</a>
-									</li>
-									<li class="nav-item"><a class="nav-link" href="#section35">TensorFlow</a>
-									</li>
-
-								</ul>
-							</nav>
+						<p>
+							<a href="#">Let Study</a>
+						</p>
+						<li class="active"><a href="Python_1.do">Python</a></li>
+						<li><a href="Java_1.do">Java</a> <a href="JS_1.do">JS</a> <a
+							href="ai_1.do">머신러닝</a> <a href="ai_2.do">딥러닝</a>
 					</ul>
+					<div class="sidebar-footer"></div>
 				</nav>
+
 			</div>
-		</div>
-
-		<div id="content">
-
-			<div class="container">
-				<!-- Stack the columns on mobile by making one full-width and the other half-width -->
-				<div class="row">
-					<div class="col-md-8"></div>
-					<div class="col-6 col-md-4"></div>
-				</div>
-
-				<!-- Columns start at 50% wide on mobile and bump up to 33.3% wide on desktop -->
-				<div class="row">
-					<div class="col-6 col-md-4">
-						<div class="card">
-							<div class="bg-image hover-overlay ripple"
-								data-mdb-ripple-color="light">
-								<img
-									src="https://mdbcdn.b-cdn.net/img/new/standard/nature/111.webp"
-									class="img-fluid" /> <a href="#!">
-									<div class="mask"
-										style="background-color: rgba(251, 251, 251, 0.15);"></div>
-								</a>
-							</div>
-							<div class="card-body">
-								<h5 class="card-title">영상 제목1</h5>
-								<p class="card-text">Some quick example text to build on the
-									card title and make up the bulk of the card's content.</p>
-							</div>
-						</div>
-					</div>
-					<div class="col-6 col-md-4">
-						<div class="card">
-							<div class="bg-image hover-overlay ripple"
-								data-mdb-ripple-color="light">
-								<img
-									src="https://mdbcdn.b-cdn.net/img/new/standard/nature/111.webp"
-									class="img-fluid" /> <a href="#!">
-									<div class="mask"
-										style="background-color: rgba(251, 251, 251, 0.15);"></div>
-								</a>
-							</div>
-							<div class="card-body">
-								<h5 class="card-title">영상 제목2</h5>
-								<p class="card-text">Some quick example text to build on the
-									card title and make up the bulk of the card's content.</p>
-							</div>
-						</div>
-					</div>
-					<div class="col-6 col-md-4">
-						<div class="card">
-							<div class="bg-image hover-overlay ripple"
-								data-mdb-ripple-color="light">
-								<img
-									src="https://mdbcdn.b-cdn.net/img/new/standard/nature/111.webp"
-									class="img-fluid" /> <a href="#!">
-									<div class="mask"
-										style="background-color: rgba(251, 251, 251, 0.15);"></div>
-								</a>
-							</div>
-							<div class="card-body">
-								<h5 class="card-title">영상 제목3</h5>
-								<p class="card-text">Some quick example text to build on the
-									card title and make up the bulk of the card's content.</p>
-							</div>
-						</div>
-					</div>
-
-
-				</div>
-
-				<!-- Columns are always 50% wide, on mobile and desktop -->
-				<div class="row">
-					<div class="col-6"></div>
-					<div class="col-6"></div>
-				</div>
-
-				<div class="row">
-					<div class="col-md-8"></div>
-					<div class="col-6 col-md-4"></div>
-				</div>
-
-				<!-- Columns start at 50% wide on mobile and bump up to 33.3% wide on desktop -->
-				<div class="row">
-
-
-					<div id="section15" class="container-fluid bg-secondary"
-						style="padding-top: 70px; padding-bottom: 70px">
-						<h1>Rnn</h1>
-						<div class="row">
-							<div class="col-md-8"></div>
-							<div class="col-6 col-md-4"></div>
-						</div>
-
-						<!-- Columns start at 50% wide on mobile and bump up to 33.3% wide on desktop -->
-						<div class="row">
-							<c:forEach var="vo" items="${list}">
-								<c:if test="${vo.lec_grammar=='Rnn'}">
-									<div class="col-6 col-md-4">
-										<div class="card">
-											<div class="bg-image hover-overlay ripple"
-												data-mdb-ripple-color="light">
-												<img src="${vo.lec_thumb}" class="img-fluid" /> <a href="#!"><div
-														class="mask"
-														style="background-color: rgba(251, 251, 251, 0.15);"></div></a>
-											</div>
-											<div class="card-body">
-												<h5 class="card-title">${vo.lec_lang}/${vo.lec_grammar}</h5>
-												<p class="card-text">${vo.lec_summ}</p>
-												<span class="btn btn-primary" id = "${vo.lec_id}" onclick = "BookMark(this.id)">${vo.mem_id eq null ? '☆' : '★'}</span>
-											</div>
-										</div>
-									</div>
-								</c:if>
-							</c:forEach>
-
-
-
-						</div>
-					</div>
-					<div id="section25" class="container-fluid bg-secondary"
-						style="padding-top: 70px; padding-bottom: 70px">
-						<h1>Cnn</h1>
-						<div class="row">
-							<div class="col-md-8"></div>
-							<div class="col-6 col-md-4"></div>
-						</div>
-
-						<!-- Columns start at 50% wide on mobile and bump up to 33.3% wide on desktop -->
-						<div class="row">
-							<c:forEach var="vo" items="${list}">
-								<c:if test="${vo.lec_grammar=='Cnn'}">
-									<div class="col-6 col-md-4">
-										<div class="card">
-											<div class="bg-image hover-overlay ripple"
-												data-mdb-ripple-color="light">
-												<img src="${vo.lec_thumb}" class="img-fluid" /> <a href="#!"><div
-														class="mask"
-														style="background-color: rgba(251, 251, 251, 0.15);"></div></a>
-											</div>
-											<div class="card-body">
-												<h5 class="card-title">${vo.lec_lang}/${vo.lec_grammar}</h5>
-												<p class="card-text">${vo.lec_summ}</p>
-												<span class="btn btn-primary" id = "${vo.lec_id}" onclick = "BookMark(this.id)">${vo.mem_id eq null ? '☆' : '★'}</span>
-											</div>
-										</div>
-									</div>
-								</c:if>
-							</c:forEach>
-						</div>
-					</div>
-					<div id="section35" class="container-fluid bg-secondary"
-						style="padding-top: 70px; padding-bottom: 70px">
-						<h1>TensorFlow</h1>
-						<div class="row">
-							<div class="col-md-8">.col-md-8</div>
-							<div class="col-6 col-md-4">.col-6 .col-md-4</div>
-						</div>
-
-						<!-- Columns start at 50% wide on mobile and bump up to 33.3% wide on desktop -->
-						<div class="row">
-							<c:forEach var="vo" items="${list}">
-								<c:if test="${vo.lec_grammar=='TensorFlow'}">
-									<div class="col-6 col-md-4">
-										<div class="card">
-											<div class="bg-image hover-overlay ripple"
-												data-mdb-ripple-color="light">
-												<img src="${vo.lec_thumb}" class="img-fluid" /> <a href="#!"><div
-														class="mask"
-														style="background-color: rgba(251, 251, 251, 0.15);"></div></a>
-											</div>
-											<div class="card-body">
-												<h5 class="card-title">${vo.lec_lang}/${vo.lec_grammar}</h5>
-												<p class="card-text">${vo.lec_summ}</p>
-												<span class="btn btn-primary" id = "${vo.lec_id}" onclick = "BookMark(this.id)">${vo.mem_id eq null ? '☆' : '★'}</span>
-											</div>
-										</div>
-									</div>
-								</c:if>
-							</c:forEach>
-						</div>
-					</div>
-
-
-				</div>
-
-				<!-- Columns are always 50% wide, on mobile and desktop -->
-				<div class="row">
-					<div class="col-6"></div>
-
-					<div class="col-6"></div>
-				</div>
-			</div>
-
 
 
 		</div>
 
-	</div>
-	</div>
+		<div class="right"></div>
+		
+		<div class="main1">
+	    <div class="card-columns">
+		<ul class="cards">
+		
+		<c:forEach var="vo" items="${list}">
+	<%-- 	<c:if test="${vo.lec_grammar=='연산자'}"> --%>
+		
+		<li>
+		    <a id="${vo.lec_id}" onclick="GoDetail_page(this.id)"  class="card" style = "margin-top">
+		      <img src="${vo.lec_thumb}" class="card__image" alt="" />
+		      <div class="card__overlay">
+		        <div class="card__header">
+		          <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>                     
+		          <img class="card__thumb" src="${vo.lec_thumb}" />
+		          <div class="card__header-text">
+		            <h3 class="card__title">${vo.lec_lang}</h3>            
+		            <span class="card__status">${vo.lec_grammar}</span>
+		          </div>
+		        </div>
+		        <p class="card__description">${vo.lec_summ}</p>
+		      </div>
+		    </a>
+		    
+		  </li>
+		  
+		<%--   </c:if> --%>
+		  </c:forEach>
+		  </ul>
+		  </div>
+			
+		</div>
 
+		
 
+		<div class="main2"></div>
+	
 
+		
 </body>
 </html>
