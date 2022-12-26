@@ -255,17 +255,6 @@ body {
 
 <script>
 
-function GoDetail_page(this_id){
-	alert(this_id);
-
-	$.ajax({
-		url:"VideoPage.do",
-		type:"get",
-		data:{"this_id" : this_id},
-		success:{}
-	});
-	window.location.href = "VideoPage.do";
-}
 
 
 </script>
@@ -283,7 +272,7 @@ function GoDetail_page(this_id){
 			  <a href="Python_1.do">Lectures</a>
 			  <a href="MyPage.do">Favorites</a>
 			  <a href="#">About</a>
-			</nav>
+			  <a onclick="location.href='logout.do'">${m_id eq null ? 'Login':'Logout'}</a>			</nav>
 
 
 
@@ -293,21 +282,35 @@ function GoDetail_page(this_id){
 				<nav id="sidebar">
 					<div class="sidebar-header">
 						<h1 class="site-title"></h1>
+						<img class="imglogo" src="./resources/images/1.png"><br/>
+		
 					</div>
 					<ul class="list-unstyled components">
 						<p>
-							<a href="#">Let Study</a>
+							<c:if test="${m_id ne null}">
+								<a href="#">${m_id}님 환영합니다.</a>
+							</c:if>
 						</p>
 						<li class="active"><a href="Python_1.do">Python</a></li>
 						<li><a href="Java_1.do">Java</a> <a href="JS_1.do">JS</a> <a
 							href="ai_1.do">머신러닝</a> <a href="ai_2.do">딥러닝</a>
 					</ul>
-					<div class="sidebar-footer"></div>
+						<div class="sidebar-footer">
+							<p class="social-icons">
+								<a target="_blank" href="#"><i class="fa fa-youtube"></i></a>
+								<a target="_blank" href="#"><i class="fa fa-soundcloud"></i></a>
+								<a target="_blank" href="#"><i class="fa fa-facebook"></i></a>
+								<a target="_blank" href="#"><i class="fa fa-twitter"></i></a>
+								<a target="_blank" href="#"><i class="fa fa-google-plus"></i></a>
+							</p>
+							<p>
+								Shared by <i class="fa fa-love"></i><a href="https://bootstrapthemes.co">Smhrd</a>
+					
+							</p>
+						</div>
 				</nav>
 
 			</div>
-
-
 		</div>
 
 		<div class="right"></div>
@@ -320,7 +323,7 @@ function GoDetail_page(this_id){
 	<%-- 	<c:if test="${vo.lec_grammar=='연산자'}"> --%>
 		
 		<li>
-		    <a id="${vo.lec_id}" onclick="GoDetail_page(this.id)"  class="card" >
+		    <a id="${vo.lec_id}" onclick="location.href='VideoPage.do?lec_id=${vo.lec_id}'"  class="card" >
 		      <img src="${vo.lec_thumb}" class="card__image" alt="" />
 		      <div class="card__overlay">
 		        <div class="card__header">

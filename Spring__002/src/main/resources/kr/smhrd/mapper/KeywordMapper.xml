@@ -7,7 +7,9 @@
 		select * from toor.keywords where lec_id = #{lec_id}
 	</select>
 
-
+	<select id="SelectLecLang" resultType="kr.smhrd.entity.lectures" >
+		select * from toor.lectures where lec_id = #{lec_id}
+	</select>
 	
 	
 	

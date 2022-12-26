@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.omg.CORBA.Request;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,31 +29,58 @@ public class FavoritesController {
 	
 	
 	@RequestMapping("/jjim.do")
-		public @ResponseBody String f_select_lec(@RequestParam Map<String, Object> param,favorites vo){
-			
-			//HttpServletRequest request
-	     	//String lec_id =request.getParameter("this_id");
+		public @ResponseBody String f_select_lec(Model model,@RequestParam Map<String, Object> param,favorites vo,HttpServletRequest request){
+			HttpSession session = request.getSession();
+			String id = (String)session.getAttribute("m_id");
+			System.out.println(id+"여기는 컨트롤로에서 session을 받아옵니다");
+		
 	     	String lec_id = (String) param.get("this_id");
-	     	System.out.println(lec_id);
 	     	
-			List<favorites>lecid = favoritesMapper.f_select_lec(lec_id);
+	     	vo.setLec_id(lec_id);
+	     	vo.setMem_id(id);
+	     	
+			List<favorites> lecid= favoritesMapper.f_select_lec(vo);
 			System.out.println(lecid.size());
+			
+		
 			if(lecid.size() == 0) {
 				System.out.println("찜하기");
-				vo.setLec_id(lec_id);
 				favoritesMapper.f_insert(vo);
 			}
 			else 
 			{
 				System.out.println("이찜");
-				vo.setLec_id(lec_id);
 				favoritesMapper.f_delete(vo);
 			}
-	
-			return "Python_1.do";
-			
+			return "VideoPage.do";
 	}
 	
+	@RequestMapping("/MyPage.do")
+		public String favorite_v(Model model,HttpSession session) {
+		String mem_id = (String) session.getAttribute("m_id");
+		System.out.println(mem_id+"session받아왔니?");
+		
+		List<lectures> list = favoritesMapper.MyPage_select(mem_id);
+		System.out.println(list.size()+"리시트의 사이즈");
+		
+		if(mem_id != null) {
+			model.addAttribute("list",list);
+			model.addAttribute("memeber_id",mem_id);
+			return "MyPage";
+		}
+		else {
+			return "redirect:/Python_1.do";
+		}
+		
+
+		
+		
+	}
+	
+	
+	
+
+
 
 	
 		

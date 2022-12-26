@@ -45,9 +45,9 @@
    <!-- Header content with banner image -->
    <div class="row">
      <div class="column1">
-       <h1>Responsive Design</h1>
-       <p>Contact us for responsive web design to grow your business!</p>
-       <button>PURCHASE</button>
+       <h1>Try it</h1>
+       <p>Use our site to study efficiently</p>
+       <button>Let's Study</button>
      </div>
      <div class="column2">
        <img src="https://www.hmablogs.com/wp-content/uploads/2022/06/banner-img.png" alt="banner" width="500px">

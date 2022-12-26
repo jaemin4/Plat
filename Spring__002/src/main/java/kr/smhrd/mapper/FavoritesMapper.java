@@ -10,12 +10,12 @@ import kr.smhrd.entity.lectures;
 @Mapper
 public interface FavoritesMapper {
 
-	public List<favorites> f_select_lec(String lec_id);
+	public List<favorites> f_select_lec(favorites vo);
 	public void f_insert(favorites vo);
 	public void f_delete(favorites vo);
-
-
-
+	/* public List<lectures> f_select_v(String mem_id); */
+	
+	public List<lectures> MyPage_select(String mem_id);
 	
 }
 

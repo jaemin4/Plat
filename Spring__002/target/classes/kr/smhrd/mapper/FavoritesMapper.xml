@@ -3,19 +3,26 @@
 <mapper namespace="kr.smhrd.mapper.FavoritesMapper">
 
 	<select id="f_select_lec"  resultType="kr.smhrd.entity.favorites" >
-        select lec_id from toor.favorites where lec_id = #{lec_id}
+        select lec_id from toor.favorites where lec_id = #{lec_id} and mem_id = #{mem_id}
 	</select>
 	
 	 <insert id="f_insert"  parameterType="kr.smhrd.entity.favorites">
-        insert into toor.favorites(mem_id,lec_id) values("admin",#{lec_id})
+        insert into toor.favorites(mem_id,lec_id) values(#{mem_id},#{lec_id})
 	</insert> 
 	
 	<delete id = "f_delete" parameterType="kr.smhrd.entity.favorites">
-		delete from toor.favorites where mem_id = "admin" and lec_id = #{lec_id}
+		delete from toor.favorites where mem_id = #{mem_id} and lec_id = #{lec_id}
 	</delete>
 	
+	<select id="f_select_v"  resultType="kr.smhrd.entity.lectures" parameterType="kr.smhrd.entity.favorites">
+		select lec.lec_id,lec_grammar,lec.lec_lang,lec.lec_script,lec.lec_summ,lec.lec_thumb,lec.lec_url from toor.lectures lec,toor.favorites fav where fav.mem_id = #{mem_id} and lec.lec_id=fav.lec_id;
+	</select>
 
-	
-	
+	<select id = "MyPage_select" resultType="kr.smhrd.entity.lectures">
+		select * from toor.lectures lec left join toor.favorites fav  on  
+		lec.lec_id = fav.lec_id and fav.mem_id=#{mem_id}
+	</select> 
+	 
+
 
 </mapper>

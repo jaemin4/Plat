@@ -58,13 +58,12 @@ public class LecturesController {
 	}
 	
 	
-	@RequestMapping("/MyPage.do")
-	public String MyPage_select(Model model) {
-		List<lectures>list = lectureMapper.MyPage_select();
-		model.addAttribute("list",list);
-		System.out.println(list.size());
-		return "MyPage";
-	}
+	/*
+	 * @RequestMapping("/MyPage.do") public String MyPage_select(Model model) {
+	 * List<lectures>list = lectureMapper.MyPage_select();
+	 * model.addAttribute("list",list); System.out.println(list.size()); return
+	 * "MyPage"; }
+	 */
 	
 	
 	@RequestMapping("/LecturePage.do")

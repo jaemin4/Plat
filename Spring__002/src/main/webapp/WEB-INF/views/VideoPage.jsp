@@ -34,7 +34,7 @@
 
 <script src="./resources/JS/BookMark.js"></script>
 
-<script>
+ <script>
 	function BookMark(this_id) {
 		let spanTag = document.getElementById(this_id);
 		console.log(this_id)
@@ -176,10 +176,11 @@ body {
 
 #card_main{
 	width:100%;
+	height:100%;
 }
 #card_screen{
 	height:30%;
-	width:70%;
+	width:90%;
 	margin-bottom:10%;
 
 }
@@ -188,10 +189,36 @@ body {
 	font-weight:300; 
 }
 
-
+#ConTainer{
+	overflow:scroll;
+	height:100%;
+	display:relative;
+}
 </style>
 
+<script>
 
+
+	
+
+
+	function GoTime(keytime){
+		
+		let Innervideo = document.getElementById("InnerVideo");
+		let lec_id = "aEYbyiftobs";
+		let keyTime = keytime;
+		
+ 		console.log(keytime)
+    	let output = `<iframe height="380px" width = "400px" src="https://www.youtube.com/embed/${list.get(0).getLec_id()}?start=\${keytime}&mute=1&autoplay=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>`;
+
+		Innervideo.innerHTML = output;
+		console.log(output);
+
+    	
+
+	}
+
+</script>
 
 
 </head>
@@ -201,11 +228,12 @@ body {
 		<div class="header">
 			<nav>
 			  
-			  <a href="index.do">Python</a>
-			  <a href="index.do">Home</a>
+			  <a href="Python_1.do">${lec_lang_list.get(0).getLec_lang()}</a>
+			  <a href="LandingPage.do">Home</a>
 			  <a href="Python_1.do">Lectures</a>
-			  <a href="MyPage.do">Favorites</a>
+			  <a href="${m_id ne null ? 'MyPage.do':'Join_login.do'}">favorites</a>
 			  <a href="#">About</a>
+			  <a onclick="location.href='logout.do'">${m_id eq null ? 'Login':'Logout'}</a>
 			</nav>
 
 
@@ -216,42 +244,49 @@ body {
 				<nav id="sidebar">
 					<div class="sidebar-header">
 						<h1 class="site-title"></h1>
+						<img class="imglogo" src="./resources/images/1.png"><br/>
+		
 					</div>
 					<ul class="list-unstyled components">
 						<p>
-							<a href="#">Let Study</a>
+							<c:if test="${m_id ne null}">
+								<a href="#">${m_id}님 환영합니다.</a>
+							</c:if>
 						</p>
 						<li class="active"><a href="Python_1.do">Python</a></li>
 						<li><a href="Java_1.do">Java</a> <a href="JS_1.do">JS</a> <a
 							href="ai_1.do">머신러닝</a> <a href="ai_2.do">딥러닝</a>
 					</ul>
-					<div class="sidebar-footer"></div>
+						<div class="sidebar-footer">
+							<p class="social-icons">
+								<a target="_blank" href="#"><i class="fa fa-youtube"></i></a>
+								<a target="_blank" href="#"><i class="fa fa-soundcloud"></i></a>
+								<a target="_blank" href="#"><i class="fa fa-facebook"></i></a>
+								<a target="_blank" href="#"><i class="fa fa-twitter"></i></a>
+								<a target="_blank" href="#"><i class="fa fa-google-plus"></i></a>
+							</p>
+							<p>
+								Shared by <i class="fa fa-love"></i><a href="https://bootstrapthemes.co">Smhrd</a>
+					
+							</p>
+						</div>
 				</nav>
 
 			</div>
-
-
 		</div>
 
 		<div class="right"></div>
 		
 		<div class="main1">
 
-		
-<%-- 		<c:forEach var="vo" items="${list}">
-			<h1>${vo.key_word}</h1>
-			<h1>${vo.key_time}</h1>
-			<h1>${vo.key_script}</h1>
-			<h1>${vo.lec_id}</h1>
-		</c:forEach> --%>
 			
 	<div class="container d-flex justify-content-center mt-50 mb-50">
         <div class="row">
            <div class="col-md-15" id = "card_main">
            		        <div class="card card-body" id = "card_screen">
                             <div class="media align-items-center align-items-lg-start text-center text-lg-left flex-column flex-lg-row">
-                                <div class="mr-2 mb-3 mb-lg-0">
-                                	<iframe height="380px" width = "500px" src="https://www.youtube.com/embed/aEYbyiftobs?start=120&mute=1&autoplay=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                                <div class="mr-2 mb-3 mb-lg-0" >
+                                	<span id = "InnerVideo"><iframe height="380px" width = "400px" src="https://www.youtube.com/embed/${list.get(0).getLec_id()}?start=120&mute=1&autoplay=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></span>
                                 </div>
 
                                 <div class="media-body">
@@ -264,7 +299,10 @@ body {
                                         <li class="list-inline-item"><a href="#" class="text-muted" data-abc="true">연산자</a></li>
                                     </ul>
                                 	
-                                    <p class="mb-3" id = "screen_p">역사에는 과거에 있었던 사건이 원인과 결과로 기록돼 있어요. 역사를 알면 어떤 사건이 일어났을 때 그것의 결과로 어떤 일이 일어 날 지를 예측할 수 있게 됩니다. 마찬가지로 지도 학습 은 과거의 데이터로부터 학습해 서 결과를 예측하는 데 주로 사용됩니다. 자 레몬의 일까 페이지를 다시 수안 해봅시다 표를 한번 ... </p>
+                                    <p class="mb-3" id = "screen_p">${lec_lang_list.get(0).getLec_summ()}</p>
+                                    <span width = "100px" id="${lec_lang_list.get(0).getLec_id()}" onclick="BookMark(this.id)">${lecid.lec_id ne null && m_id ne null ? '★' : '☆' }</span>
+                                    
+                                    
                                 </div>
 
                                 	<div class="mt-3 mt-lg-0 ml-lg-3 text-center">
@@ -272,12 +310,8 @@ body {
                                 </div>
                             </div>
                         </div>
-    
-
-           
-
-           		
-           
+    	<div id = "ConTainer">
+         	 <c:forEach var="vo" items="${list}">
                 <div class="card card-body" id = "card_body">
                             <div class="media align-items-center align-items-lg-start text-center text-lg-left flex-column flex-lg-row">
                                 <div class="mr-2 mb-3 mb-lg-0">
@@ -288,7 +322,7 @@ body {
 
                                 <div class="media-body">
                                     <h6 class="media-title font-weight-semibold">
-                                        <a href="https://youtu.be/_aCuOwF1ZjU&t=139" data-abc="true">키워드</a>
+                                        <a href = "#" data-abc="true" onclick = "GoTime(${vo.key_time})">${vo.key_word}</a>
                                     </h6>
 
                                     <ul class="list-inline list-inline-dotted mb-3 mb-lg-2">
@@ -296,7 +330,7 @@ body {
                                         <li class="list-inline-item"><a href="#" class="text-muted" data-abc="true">연산자</a></li>
                                     </ul>
 
-                                    <p class="mb-3">역사에는 과거에 있었던 사건이 원인과 결과로 기록돼 있어요. 역사를 알면 어떤 사건이 일어났을 때 그것의 결과로 어떤 일이 일어 날 지를 예측할 수 있게 됩니다. 마찬가지로 지도 학습 은 과거의 데이터로부터 학습해 서 결과를 예측하는 데 주로 사용됩니다. 자 레몬의 일까 페이지를 다시 수안 해봅시다 표를 한번 ... </p>
+                                    <p class="mb-3">${vo.key_script}</p>
 
                                     <ul class="list-inline list-inline-dotted mb-0">
                                         <li class="list-inline-item"> <a href="#" data-abc="true">나도코딩</a></li>
@@ -319,52 +353,16 @@ body {
                                 </div>
                             </div>
                         </div>
+                     </c:forEach>
+                    </div>
 
 
 
 
 
-
-                         <div class="card card-body mt-3" id = "card_body">
-                            <div class="media align-items-center align-items-lg-start text-center text-lg-left flex-column flex-lg-row">
-                                <div class="mr-2 mb-3 mb-lg-0">
-                                    
-                                        <img src="https://i.imgur.com/Aj0L4Wa.jpg" width="150" height="150" alt="">
-                                   
-                                </div>
-
-                                <div class="media-body">
-                                    <h6 class="media-title font-weight-semibold">
-                                        <a href="https://youtu.be/_aCuOwF1ZjU&t=72" data-abc="true">키워드</a>
-                                    </h6>
-
-                                    <ul class="list-inline list-inline-dotted mb-3 mb-lg-2">
-                                        <li class="list-inline-item"><a href="#" class="text-muted" data-abc="true">Python</a></li>
-                                        <li class="list-inline-item"><a href="#" class="text-muted" data-abc="true">연산자</a></li>
-                                    </ul>
-
-                                    <p class="mb-3">공식의 대중화 이런 놀라운 시대의 공부하지 않는 다는 것이 얼마나 손에 인가요. 기분 좋죠. 박스 프. 그런데 이왕 여기까지 왔는데 여기서 멈추는 것은 조금 아깝습니다. 조금만 더 멀리 가 봅시다. 조금만 더 멀리 가면 전문가도 대화할 수 있는 수준에 도달할 수 있거든요.</p>
-
-                                    <ul class="list-inline list-inline-dotted mb-0">
-                                        <li class="list-inline-item"><a href="#" data-abc="true">나도 코딩</a></li>
-                                        <li class="list-inline-item"><a href="#" data-abc="true"></a></li>
-                                    </ul>
-                                </div>
-
-                                <div class="mt-3 mt-lg-0 ml-lg-3 text-center">
-                                    <h3 class="mb-0 font-weight-semibold"></h3>
-
-                                    <div>
-                                        <i class="fa fa-star"></i>
-              
-                                    </div>
-
-                                    <div class="text-muted">2349 reviews</div>
-
-                                    <button type="button"></button>
-                                </div>
-                            </div>
-                        </div> 
+						
+    
+                        
                         
 
 					

@@ -39,6 +39,7 @@ public class MemberController {
 	public String register(members vo,Model model) {
 
 		memberMapper.register(vo); 
+		
 	
 		return "redirect:./Python_1.do";
 	}
@@ -48,21 +49,40 @@ public class MemberController {
 
 		members m = memberMapper.login(vo);
 		if(m != null) {
-			// 회원인증에 성공~
-			session.setAttribute("m_name", m.getMem_name()); //${m.memName}
-			System.out.println(m.getMem_name());
+			session.setAttribute("m_id", m.getMem_id());
+			System.out.println(m.getMem_id()+"이것은 mem_name입니다");
 			return "redirect:./Python_1.do";
 		}
 	
-
 		else {
 			System.out.println();
 			return "redirect:/Join_login.do";
 		}
 		
+	}
 	
+	@RequestMapping(value = "/logout.do")
+	public String logout(HttpSession session) {
+
+		String m_id = (String)session.getAttribute("m_id");
+		if(m_id != null) {
+			session.invalidate();
+			return "redirect:./Python_1.do";
+		}
+		else {
+			return  "redirect:/Join_login.do";
+		}
+		
+		
+	   
+		  
+
+	       
 		
 	}
+	
+
+	
 	
 	
 

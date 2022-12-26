@@ -4,6 +4,9 @@
     margin: 0;
     padding: 0;
 }
+html{
+	width:auto;
+}
 
 .container{
     padding-top:0px;
@@ -30,12 +33,16 @@
    grid-area: header;
    height:50%;
    margin-bottom : 7%;
+   margin-right:5%;
    
+   padding-left:5%;
 }
 .header>ul{
     display: flex;
     justify-content: flex-end;
-    margin-top: 5px;
+    margin-top: 7%;
+
+    
 
     
 
@@ -43,13 +50,13 @@
 
 
 .header>nav>a{
-    margin-left: 64px;
+    margin-left: 3%;
     font-size:22px;
 
     
 }
 .header>nav>a:nth-child(1){
-	margin-right:25%;
+	margin-right:20%;
 }
 
 
@@ -74,7 +81,7 @@
 }
 .main1{
     grid-area:main1;
-    margin-left:8%;
+    margin-left:13%;
     height:1280px;
     
 
@@ -91,6 +98,7 @@
 .sidebar{
 	height:100%;
 	width:100%;
+	margin-left:8%;
 
 }
 
@@ -181,6 +189,7 @@ img {
 #sidebar ul.components {
 	padding:0;
   	margin-bottom:50px;
+  
   	text-align: center;
 }
 #sidebar ul p {
@@ -286,6 +295,9 @@ h1.site-title {
 
 .card-columns .card {
     margin-bottom: 1.25rem;
+}
+.sidebar-header{
+	margin-top:10%;
 }
 /* --------------------------------------------------- Media QUERIES----------------------------------------------------- */
 
