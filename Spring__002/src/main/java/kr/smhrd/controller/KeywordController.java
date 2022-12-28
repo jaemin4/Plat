@@ -39,6 +39,22 @@ public class KeywordController {
 		return "VideoPage";
 	}
 
+	@RequestMapping("/VideoPage2.do")
+	public String SelectKeyword1(Model model, String lec_id) {
+		
+		lec_id = "0J2ylZFJ85Q";
+		keywords vo = new keywords();
+		vo.setLec_id(lec_id);
+	
+		List<keywords> list = keywordmapper.SelectKeyword(vo);
+		model.addAttribute("list", list);
+		
+		
+		List<lectures>lec_lang_list = keywordmapper.SelectLecLang(vo);
+		model.addAttribute("lec_lang_list", lec_lang_list);
+		
+		return "VideoPage";
+	}
 
 	
 

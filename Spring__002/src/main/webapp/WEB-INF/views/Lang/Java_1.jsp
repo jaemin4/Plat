@@ -226,9 +226,55 @@ body {
   -webkit-line-clamp: 3;
   overflow: hidden;
 }    
+
+#search_area{
+	margin-left:20%;
+	margin-top:3%;
+	width:100%;
+	display:flex;
+	height:45px;
+
+
+    
+}
+#input_area{
+	width:100%;
+	height:100%;
+	background: #fff;
+    border-radius: 30px;
+    margin-left:3%;
+     
+}
+#searchbar{
+	width:70px;
+	border:none;
+	background: #fff;
+    border-radius: 30px;
+   
+    
+ 
+   
+}
+.card-columns {
+    -webkit-column-count: 3;
+    -moz-column-count: 3;
+     column-count: auto;
+    -webkit-column-gap: 2rem;
+    -moz-column-gap: 2rem;
+    column-gap: 2rem;
+    width:100%;
+    margin-top:-5%;
+}
+
+
 </style>
 
+<script>
+	function notLogin_f(){
+		alert("로그인을 해주세요");
+	}
 
+</script>
 
 </head>
 <body>
@@ -237,12 +283,22 @@ body {
 		<div class="header">
 			<nav>
 			  
-			  <a href="Java_1.do">Java</a>
-			  <a href="LandingPage.do">Home</a>
-			  <a href="Python_1.do">Lectures</a>
-			  <a href="MyPage.do">Favorites</a>
-			  <a href="#">About</a>
-			  <a onclick="location.href='logout.do'">${m_id eq null ? 'Login':'Logout'}</a>			</nav>
+			  <a>
+				  	<form id = "form" onsubmit="return submitForm()">
+						<div id = "search_area">
+				        	<input type="text" placeholder="Search..." name = "keyword" id = "input_area">
+				        	<input type = "submit" id = "searchbar" value="검색">
+			   			 </div>
+			   		</form>
+			  
+			  </a>
+			  
+			  <a href="LandingPage.do">home</a>
+			  <a href="Python_1.do">lectures</a>
+			  <a href="${m_id ne null ? 'MyPage.do':'Join_login.do'}">favorites</a>
+			  <a href="#">about</a>
+			  <a onclick="location.href='logout.do'">${m_id eq null ? 'Login':'Logout'}</a>
+			</nav>
 
 
 
@@ -286,7 +342,7 @@ body {
 		<div class="right"></div>
 		
 		<div class="main1">
-	    <div class="card-columns">
+		<div class="card-columns" id = "rem">
 		<ul class="cards">
 		
 		<c:forEach var="vo" items="${list}">
@@ -314,6 +370,8 @@ body {
 		  </c:forEach>
 		  </ul>
 		  </div>
+		<div class="row my-5" id="video-container"></div>
+	    
 			
 		</div>
 
@@ -321,7 +379,7 @@ body {
 
 		<div class="main2"></div>
 	
-
+		<script src = "./resources/JS/main.js"></script>
 	
 </body>
 </html>

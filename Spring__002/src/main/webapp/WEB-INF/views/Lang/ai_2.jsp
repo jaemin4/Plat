@@ -9,8 +9,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	
 <link rel="stylesheet" href="./resources/css/bootstrap.min.css">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -32,30 +32,7 @@
 <script src="./resources/JS/perfect-scrollbar.min.js"></script>
 <script src="./resources/JS/common.js"></script>
 
-<script src="./resources/JS/BookMark.js"></script>
 
-<script>
-	function BookMark(this_id) {
-		let spanTag = document.getElementById(this_id);
-		console.log(this_id)
-
-		$.ajax({
-			url : "${cpath}/jjim.do",
-			type : "get",
-			data : {
-				"this_id" : this_id
-			},
-			success : console.log("success"),
-			error : console.log("error")
-		});
-
-		if (spanTag.innerText == '★') {
-			spanTag.innerText = '☆'
-		} else {
-			spanTag.innerText = '★'
-		}
-	}
-</script>
 
 <style>
 @import url('https://fonts.googleapis.com/css?family=Oswald:500');
@@ -147,8 +124,8 @@ body {
 .cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1rem;
-  margin: 2rem 2.5vw;
+  gap: 2rem;
+  margin: 4rem 5vw;
   padding: 0;
   list-style-type: none;
 }
@@ -249,17 +226,55 @@ body {
   -webkit-line-clamp: 3;
   overflow: hidden;
 }    
+
+#search_area{
+	margin-left:20%;
+	margin-top:3%;
+	width:100%;
+	display:flex;
+	height:45px;
+
+
+    
+}
+#input_area{
+	width:100%;
+	height:100%;
+	background: #fff;
+    border-radius: 30px;
+    margin-left:3%;
+     
+}
+#searchbar{
+	width:70px;
+	border:none;
+	background: #fff;
+    border-radius: 30px;
+   
+    
+ 
+   
+}
+.card-columns {
+    -webkit-column-count: 3;
+    -moz-column-count: 3;
+     column-count: auto;
+    -webkit-column-gap: 2rem;
+    -moz-column-gap: 2rem;
+    column-gap: 2rem;
+    width:100%;
+    margin-top:-5%;
+}
+
+
 </style>
 
-
-
 <script>
-
-
-
+	function notLogin_f(){
+		alert("로그인을 해주세요");
+	}
 
 </script>
-
 
 </head>
 <body>
@@ -268,11 +283,20 @@ body {
 		<div class="header">
 			<nav>
 			  
-			  <a href="ai_2.do">Deep</a>
-			  <a href="LandingPage.do">Home</a>
-			  <a href="Python_1.do">Lectures</a>
-			  <a href="MyPage.do">Favorites</a>
-			  <a href="#">About</a>
+			  <a>
+				  	<form id = "form" onsubmit="return submitForm()">
+						<div id = "search_area">
+				        	<input type="text" placeholder="Search..." name = "keyword" id = "input_area">
+				        	<input type = "submit" id = "searchbar" value="검색">
+			   			 </div>
+			   		</form>
+			  
+			  </a>
+			  
+			  <a href="LandingPage.do">home</a>
+			  <a href="Python_1.do">lectures</a>
+			  <a href="${m_id ne null ? 'MyPage.do':'Join_login.do'}">favorites</a>
+			  <a href="#">about</a>
 			  <a onclick="location.href='logout.do'">${m_id eq null ? 'Login':'Logout'}</a>
 			</nav>
 
@@ -318,14 +342,14 @@ body {
 		<div class="right"></div>
 		
 		<div class="main1">
-	    <div class="card-columns">
+		<div class="card-columns" id = "rem">
 		<ul class="cards">
 		
 		<c:forEach var="vo" items="${list}">
 	<%-- 	<c:if test="${vo.lec_grammar=='연산자'}"> --%>
 		
 		<li>
-		    <a id="${vo.lec_id}" onclick="location.href='VideoPage.do?lec_id=${vo.lec_id}'"   class="card" style = "margin-top">
+		    <a id="${vo.lec_id}" onclick="location.href='VideoPage.do?lec_id=${vo.lec_id}'"  class="card" >
 		      <img src="${vo.lec_thumb}" class="card__image" alt="" />
 		      <div class="card__overlay">
 		        <div class="card__header">
@@ -346,6 +370,8 @@ body {
 		  </c:forEach>
 		  </ul>
 		  </div>
+		<div class="row my-5" id="video-container"></div>
+	    
 			
 		</div>
 
@@ -353,7 +379,7 @@ body {
 
 		<div class="main2"></div>
 	
-
-		
+		<script src = "./resources/JS/main.js"></script>
+	
 </body>
 </html>

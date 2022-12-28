@@ -230,10 +230,9 @@ body {
 #search_area{
 	margin-left:20%;
 	margin-top:3%;
-	width:100%;
+	width:30%;
 	display:flex;
 	height:45px;
-
 
     
 }
@@ -242,67 +241,39 @@ body {
 	height:100%;
 	background: #fff;
     border-radius: 30px;
-    margin-left:3%;
-     
+    
 }
 #searchbar{
-	width:70px;
+	width:80px;
 	border:none;
 	background: #fff;
     border-radius: 30px;
-   
-    
- 
+    margin-right:30px;
    
 }
-.card-columns {
-    -webkit-column-count: 3;
-    -moz-column-count: 3;
-     column-count: auto;
-    -webkit-column-gap: 2rem;
-    -moz-column-gap: 2rem;
-    column-gap: 2rem;
-    width:100%;
-    margin-top:-5%;
-}
+
+
 
 
 </style>
 
-<script>
-	function notLogin_f(){
-		alert("로그인을 해주세요");
-	}
-
-</script>
 
 </head>
 <body>
 
 	<div class="container">
+	
 		<div class="header">
-			<nav>
-			  
-			  <a>
-				  	<form id = "form" onsubmit="return submitForm()">
-						<div id = "search_area">
-				        	<input type="text" placeholder="Search..." name = "keyword" id = "input_area">
-				        	<input type = "submit" id = "searchbar" value="검색">
-			   			 </div>
-			   		</form>
-			  
-			  </a>
-			  
-			  <a href="LandingPage.do">home</a>
-			  <a href="Python_1.do">lectures</a>
-			  <a href="${m_id ne null ? 'MyPage.do':'Join_login.do'}">favorites</a>
-			  <a href="#">about</a>
-			  <a onclick="location.href='logout.do'">${m_id eq null ? 'Login':'Logout'}</a>
-			</nav>
-
-
-
+		<form action = "searchcon.do">
+			<div id = "search_area">
+	        	<input type="text" placeholder="Search..." name = "keyword" id = "input_area">
+	        	<button type = "submit" id = "searchbar">검색</button>
+   			 </div>
+   		</form>
 		</div>
+		
+		
+		
 		<div class="left">
 			<div class="sidebar">
 				<nav id="sidebar">
@@ -317,9 +288,11 @@ body {
 								<a href="#">${m_id}님 환영합니다.</a>
 							</c:if>
 						</p>
-						<li class="active"><a href="Python_1.do">Python</a></li>
-						<li><a href="Java_1.do">Java</a> <a href="JS_1.do">JS</a> <a
-							href="ai_1.do">머신러닝</a> <a href="ai_2.do">딥러닝</a>
+					
+						<li> <a href="LandingPage.do">home</a>
+							  <a href="Python_1.do">lectures</a> 
+							  <a href="${m_id ne null ? 'MyPage.do':'Join_login.do'}">favorites</a>
+							  <a onclick="location.href='logout.do'">${m_id eq null ? 'Login':'Logout'}</a>
 					</ul>
 						<div class="sidebar-footer">
 							<p class="social-icons">
@@ -342,36 +315,15 @@ body {
 		<div class="right"></div>
 		
 		<div class="main1">
-		<div class="card-columns" id = "rem">
-		<ul class="cards">
-		
-		<c:forEach var="vo" items="${list}">
-	<%-- 	<c:if test="${vo.lec_grammar=='연산자'}"> --%>
-		
-		<li>
-		    <a id="${vo.lec_id}" onclick="location.href='VideoPage.do?lec_id=${vo.lec_id}'"  class="card" >
-		      <img src="${vo.lec_thumb}" class="card__image" alt="" />
-		      <div class="card__overlay">
-		        <div class="card__header">
-		          <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>                     
-		          <img class="card__thumb" src="${vo.lec_thumb}" />
-		          <div class="card__header-text">
-		            <h3 class="card__title">${vo.lec_lang}</h3>            
-		            <span class="card__status">${vo.lec_grammar}</span>
-		          </div>
-		        </div>
-		        <p class="card__description">${vo.lec_summ}</p>
-		      </div>
-		    </a>
-		    
-		  </li>
+	   	  
+		        
+        <div class="row my-5" id="video-container"></div>
+    
+ 
+		        
 		  
-		<%--   </c:if> --%>
-		  </c:forEach>
-		  </ul>
-		  </div>
-		<div class="row my-5" id="video-container"></div>
-	    
+
+   			
 			
 		</div>
 
@@ -379,7 +331,7 @@ body {
 
 		<div class="main2"></div>
 	
+
 		<script src = "./resources/JS/main.js"></script>
-	
 </body>
 </html>

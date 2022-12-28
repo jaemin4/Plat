@@ -14,6 +14,7 @@ html{
     padding-left:0px;
     margin-left:0px;
     display: grid;
+
     
 
     
@@ -26,15 +27,14 @@ html{
     height: 1320px;
    
     grid-template-rows: 1fr 11fr 11fr 4fr;
-    grid-template-columns: 1fr 5fr 1fr;
+    grid-template-columns: 1fr 6fr 1fr;
     
 }
 .header{
    grid-area: header;
    height:50%;
    margin-bottom : 7%;
-   margin-right:5%;
-   
+   margin-right:6%;
    padding-left:5%;
 }
 .header>ul{
@@ -56,7 +56,9 @@ html{
     
 }
 .header>nav>a:nth-child(1){
-	margin-right:20%;
+	margin-right:5%;
+	margin-left:7%;
+	
 }
 
 
@@ -83,6 +85,7 @@ html{
     grid-area:main1;
     margin-left:13%;
     height:1280px;
+    width:auto;
     
 
  
@@ -295,6 +298,7 @@ h1.site-title {
 
 .card-columns .card {
     margin-bottom: 1.25rem;
+   
 }
 .sidebar-header{
 	margin-top:10%;

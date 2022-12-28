@@ -9,310 +9,329 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	
+<link rel="stylesheet" href="./resources/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="./resources/css/perfect-scrollbar.min.css">
+<link
+	href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&amp;subset=devanagari,latin-ext"
+	rel="stylesheet">
+
+
+<link
+	href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+	rel="stylesheet">
+
+
+<link rel="stylesheet" href="./resources/css/style.css">
+<script src="./resources/JS/jquery.js"></script>
+<script src="./resources/JS/tether.min.js"></script>
+<script src="./resources/JS/bootstrap.min.js"></script>
+<script src="./resources/JS/perfect-scrollbar.min.js"></script>
+<script src="./resources/JS/common.js"></script>
+
+
 
 <style>
-$scene: var(--scene);
-$total: var(--total);
-$percentage: var(--percentage);
+@import url('https://fonts.googleapis.com/css?family=Oswald:500');
+.thx{
+  position: fixed;
+  left:70%;
+  transform:translateX(-50%);
+  bottom: 15px;
+}
+nav{
+  width: 100%;
+  top:50px;
+  margin-top:40px;
+  text-align:center;
+}
+nav a{
+  font-family: 'Oswald', sans-serif;
+  font-weight:500;
+  text-transform:uppercase;
+  text-decoration:none;
+  color:#16151b;
+  margin:0 15px;
+  font-size:16px;
+  letter-spacing:1px;
+  position:relative;
+  display:inline-block;
+}
+nav a:before{
+  content:'';
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  background:#16151b;
+  top:47%;
+  animation:out 0.2s cubic-bezier(1, 0, 0.58, 0.97) 1 both;
+}
+nav a:hover:before{
 
-@import url('https://fonts.googleapis.com/css?family=Josefin+Sans:400,700');
-@import url('https://fonts.googleapis.com/css?family=Oswald');
-
-.site {
-	display: grid;
-	grid-template-rows: 3fr 2fr;
-	grid-template-columns: 5rem 1fr 1fr 5rem;
-	box-shadow: 0 .5rem 2rem rgba(black, 0.1);
-	width: 90vw;
-	height: 90vh;
-	background-color: white;
-	font-family: 'Josefin Sans', sans-serif;
-	* {
-		transition: all 0.5s ease;
-	}
+}
+@keyframes in{
+  0%{
+    width: 0;
+    left:0;
+    right:auto;
+  }
+  100%{
+    left:0;
+    right:auto;
+    width: 100%;
+  }
+}
+@keyframes out{
+  0%{
+    width:100%;
+    left: auto;
+    right: 0;
+  }
+  100%{
+    width: 0;
+    left: auto;
+    right: 0;
+  }
+}
+@keyframes show{
+  0%{
+    opacity:0;
+    transform:translateY(-10px);
+  }
+  100%{
+    opacity:1;
+    transform:translateY(0);
+  }
 }
 
-.site {
-	--total: 4;
-	--percentage: calc( #{ $scene / $total });
-}
-input[value='1']:checked ~ .site { --scene: 1; }
-input[value='2']:checked ~ .site { --scene: 2; }
-input[value='3']:checked ~ .site { --scene: 3; }
-input[value='4']:checked ~ .site { --scene: 4; }
-
-input[name="scene"] { display: none; }
-
-input[value="1"]:checked ~ * label[data-scene='1'],
-input[value="2"]:checked ~ * label[data-scene='2'],
-input[value="3"]:checked ~ * label[data-scene='3'],
-input[value="4"]:checked ~ * label[data-scene='4'] {
-	display: none;	
+:root {
+  --surface-color: #fff;
+  --curve: 40;
 }
 
-input[value="1"]:checked ~ * [data-scene]:not([data-scene="1"]),
-input[value="2"]:checked ~ * [data-scene]:not([data-scene="2"]),
-input[value="3"]:checked ~ * [data-scene]:not([data-scene="3"]),
-input[value="4"]:checked ~ * [data-scene]:not([data-scene="4"]) {
-	.heading,
-	.paragraph {
-		transform: translateX(-25%);
-		opacity: 0;
-	}
-}
-
-input[value="1"]:checked ~ * [data-scene="1"],
-input[value="2"]:checked ~ * [data-scene="2"],
-input[value="3"]:checked ~ * [data-scene="3"],
-input[value="4"]:checked ~ * [data-scene="4"] {
-	+ [data-scene] {
-		tranform: translateX(25%);
-	}
-}
-.layer {
-	position: absolute;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	top: 0;
-	width: 100%;
-	height: 100%;
-	// for centering layer
-	margin: auto;
-}
-
-
-.landscape {
-	display: flex;
-	align-items: center;
-	grid-row: 1 / 2;
-	grid-column: 1 / -1;
-	background-color: #141610;
-	background-image: url(https://picsum.photos/4000/2660?image=992);
-	background-repeat: no-repeat;
-	background-size: cover;
-	background-position: center 20%;
-	overflow: hidden;
-}
-
-.landscape-text {
-	display: inline-block;
-	font-size: 40vh;
-	font-weight: bold;
-	
-	// left: 50%;
-	background: inherit;
-	background-image: url('https://picsum.photos/5615/2907?image=974');
-	background-clip: text;
-	-webkit-background-clip: text;
-	background-size: 160% auto;
-	background-position: calc(80% + ( -70% * #{$percentage})) 0;
-	color: transparent;
-	transform: translateX( calc( 40% + (-100% * #{$percentage}) ) );
-}
-
-.left-side {
-	grid-row: 1 / 2;
-	grid-column: 2 / 3;
-	font-family: 'Oswald';
-	align-self: end;
-}
-
-.page-numbers {
-	color: white;
-	overflow: hidden;
-	&:after {
-		content: '/' attr(data-total);
-		font-size: 1rem;
-		position: absolute;
-		top: 0;
-		left: 4rem;
-	}
-}
-
-.page-number {
-	font-size: 4rem;
-	line-height: 4.2rem;
-	&--tens {
-		align-self: flex-end;
-	}
-	&--ones {
-		position: absolute;
-		top: 0;
-		left: 0.5em;
-		transform: translateY( calc((-100% * (#{ $percentage } - 1/#{$total} ) ) ) );
-	}
-}
-
-.left-content {
-	grid-row: 2 / 4;
-	grid-column: 1 / 3;
-}
-
-.right-content {
-	color: black;
-	grid-row: 2 / 4;
-	grid-column: 3 / -1;
-	overflow: auto;
-	> .layer {
-		padding: 30px;
-	}
-}
-
-.slide-nav {
-	position: absolute;
-	right: 0;
-	bottom: 0;
-	overflow: hidden;
-}
-
-$nav-button-width: 5rem;
-
-.nav-button-container {
-	display: flex;
-	position: absolute;
-	top: 0;
-	transition: none;
-	transform: translateX(calc(100% + (-1 * #{$nav-button-width} * (#{$scene} + 1))));
-	opacity: 0;
-}
-
-.button-container {
-	display: flex;
-	outline: none;
-	right: 0;
-}
-
-.nav-button {
-	display: inline-block;
-	padding: 0.5em;
-	width: $nav-button-width;
-	background: rgba(0,0,0, 0.8);
-	color: white;
-	cursor: pointer;
-	font-family: inherit;
-	height: 2rem;
-	border: none;
-	padding: 0.5rem;
-	outline: none;
-}
-
-.hero {
-	color: white;
-	grid-row: 1 / 2;
-	grid-column: 3 / -1;
-	> .layer {
-		display: flex;
-		height: 40%;
-	}
-}
-
-*,
-*:before,
-*:after {
-	box-sizing: border-box;
-	position: relative;
+* {
+  box-sizing: border-box;
 }
 
 body {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	height: 100vh;
-	background-color: #ccc;
+  font-family: 'Noto Sans JP', sans-serif;
+  background-color: #fef8f8;
 }
 
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin: 4rem 5vw;
+  padding: 0;
+  list-style-type: none;
+}
+
+.card {
+  position: relative;
+/*   display: block; */
+  height: 100%;  
+  border-radius: calc(var(--curve) * 1px);
+  overflow: hidden;
+  text-decoration: none;
+}
+
+.card__image {      
+  width: 100%;
+  height: auto;
+}
+
+.card__overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;      
+  border-radius: calc(var(--curve) * 1px);    
+  background-color: var(--surface-color);      
+  transform: translateY(100%);
+  transition: .2s ease-in-out;
+}
+
+.card:hover .card__overlay {
+  transform: translateY(0);
+}
+
+.card__header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 2em;
+  padding: 2em;
+  border-radius: calc(var(--curve) * 1px) 0 0 0;    
+  background-color: var(--surface-color);
+  transform: translateY(-100%);
+  transition: .2s ease-in-out;
+}
+
+.card__arc {
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  bottom: 100%;
+  right: 0;      
+  z-index: 1;
+}
+
+.card__arc path {
+  fill: var(--surface-color);
+  d: path("M 40 80 c 22 0 40 -22 40 -40 v 40 Z");
+}       
+
+.card:hover .card__header {
+  transform: translateY(0);
+}
+
+.card__thumb {
+  flex-shrink: 0;
+  width: 50px;
+  height: 50px;      
+  border-radius: 50%;      
+}
+
+.card__title {
+  font-size: 1em;
+  margin: 0 0 .3em;
+  color: #6A515E;
+}
+
+.card__tagline {
+  /* display: block; */
+  margin: 1em 0;
+  font-family: "MockFlowFont";  
+  font-size: .8em; 
+  color: #D7BDCA;  
+}
+
+.card__status {
+  font-size: .8em;
+  color: #D7BDCA;
+}
+
+.card__description {
+  padding: 0 2em 2em;
+  margin: 0;
+  color: #D7BDCA;
+  font-family: "MockFlowFont";   
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}    
+
+#search_area{
+	margin-left:20%;
+	margin-top:3%;
+	width:30%;
+	display:flex;
+	height:45px;
+
+    
+}
+#input_area{
+	width:100%;
+	height:100%;
+	background: #fff;
+    border-radius: 30px;
+    
+}
+#searchbar{
+	width:80px;
+	border:none;
+	background: #fff;
+    border-radius: 30px;
+    margin-right:30px;
+   
+}
+
+
+
+
 </style>
+
+
 </head>
 <body>
-<input id="scene-1" type="radio" name="scene" value="1" checked />
-<input id="scene-2" type="radio" name="scene" value="2" />
-<input id="scene-3" type="radio" name="scene" value="3" />
-<input id="scene-4" type="radio" name="scene" value="4" />
 
-<main class="site">
-	<div class="landscape">
-		<div class="landscape-text">
-			DREAM
+	<div class="container">
+	
+		<div class="header">
+		<form id = "form" onsubmit="return submitForm()">
+			<div id = "search_area">
+	        	<input type="text" placeholder="Search..." name = "keyword" id = "input_area">
+	        	<input type = "submit" id = "searchbar" value="검색">
+   			 </div>
+   		</form>
 		</div>
-	</div>
-	<div class="left-side">
-		<div class="page-numbers" data-total='04'>
-			<div class="page-number page-number--tens">0</div>
-			<div class="page-number page-number--ones">
-				<div>1</div>
-				<div>2</div>
-				<div>3</div>
-				<div>4</div>
-			</div>
-		</div>
-	</div>
-	<div class="hero">
-		<div class="layer" data-scene="1">
-			<h1 class="heading">
-				Introduction
-			</h1>
-		</div>
-		<div class="layer" data-scene="2">
-			<h1 class="heading">
-				Navigation
-			</h1>
-		</div>
-		<div class="layer" data-scene="3">
-			<h1 class="heading">
-				Masked Text
-			</h1>
-		</div>
-		<div class="layer" data-scene="4">
-			<h1 class="heading">
-				Modern CSS Techniques
-			</h1>
-		</div>
-		<nav class="slide-nav">
-			<div class="button-container">
-				<button class="nav-button">< Previous</button>
-				<button class="nav-button">Next ></button>
-			</div>
-			<div class="nav-button-container">
-				<label class="nav-button" for="scene-1" data-scene="1">1</label>
-				<label class="nav-button" for="scene-2" data-scene="2">2</label>
-				<label class="nav-button" for="scene-3" data-scene="3">3</label>
-				<label class="nav-button" for="scene-4" data-scene="4">4</label>
-			</div>
-		</nav>
-	</div>
-	<div class="right-content">
-		<div class="layer" data-scene="1">
-			<h2 class="heading">A digest of the tutorial</h2>
-			<p class="paragraph">
-				This is my take on <a href="https://www.youtube.com/watch?v=kd_zuEYCDck">@keyframers' Ocean Overlays</a> codepen exercise. It uses CSS only to acheive masked text, navigation, and animation. It also uses CSS variables in a neat way to acheive some cool effects. Click next to get a summary of how to replicate these techniques.
-			</p>
-		</div>
-		<div class="layer" data-scene="2">
-			<h2 class="heading">Hidden radio buttons</h2>
-			<p class="paragraph">
-				There are 4 hidden radio inputs on this page that keep track of the current "scene". The radios inputs are associated with labels that are also hidden. These labels overlay the "next" and "previous" buttons and are toggled based on the CSS selectors.
-			</p>
-		</div>
-		<div class="layer" data-scene="3">
-			<h2 class="heading">background-clip,<br />background-position, and transform</h2>
-			<p class="paragraph">
-				The masked text can be acheived by setting a background image to the tag containing the text, then by setting background-clip: text. This attribute requires -webkit- prefixing, so don't forget to add that attribute. We use transform to move the text across the page, and background-position to slightly shift the background against the transform direction to get a parallax effect.
-			</p>
-		</div>
-		<div class="layer" data-scene="4">
-			<h2 class="heading">CSS Grid and CSS Variables</h2>
-			<p class="paragraph">
-				The primary layout technique used here is CSS grid. The parent defines grid-template-* and the children uses grid-row and grid-column to determine where the element will span on the grid.
-			</p>
-			<p class="paragraph">
-				The other neat technique used here is CSS variables, which helps to store the current scene value within the CSS stylesheet. Based on the CSS selectors, the --scene variable will be set and used to calculate the percent offset used in the animation. 
-			</p>
-		</div>
-	</div>
-</main>
+		
+		
+		
+		<div class="left">
+			<div class="sidebar">
+				<nav id="sidebar">
+					<div class="sidebar-header">
+						<h1 class="site-title"></h1>
+						<img class="imglogo" src="./resources/images/1.png"><br/>
+		
+					</div>
+					<ul class="list-unstyled components">
+						<p>
+							<c:if test="${m_id ne null}">
+								<a href="#">${m_id}님 환영합니다.</a>
+							</c:if>
+						</p>
+					
+						<li> <a href="LandingPage.do">home</a>
+							  <a href="Python_1.do">lectures</a> 
+							  <a href="${m_id ne null ? 'MyPage.do':'Join_login.do'}">favorites</a>
+							  <a onclick="location.href='logout.do'">${m_id eq null ? 'Login':'Logout'}</a>
+					</ul>
+						<div class="sidebar-footer">
+							<p class="social-icons">
+								<a target="_blank" href="#"><i class="fa fa-youtube"></i></a>
+								<a target="_blank" href="#"><i class="fa fa-soundcloud"></i></a>
+								<a target="_blank" href="#"><i class="fa fa-facebook"></i></a>
+								<a target="_blank" href="#"><i class="fa fa-twitter"></i></a>
+								<a target="_blank" href="#"><i class="fa fa-google-plus"></i></a>
+							</p>
+							<p>
+								Shared by <i class="fa fa-love"></i><a href="https://bootstrapthemes.co">Smhrd</a>
+					
+							</p>
+						</div>
+				</nav>
 
+			</div>
+		</div>
+
+		<div class="right"></div>
+		
+		<div class="main1">
+	   	  
+		        
+        <div class="row my-5" id="video-container"></div>
+    
+ 
+		        
+		  
+
+   			
+			
+		</div>
+
+		
+
+		<div class="main2"></div>
 	
 
+		<script src = "./resources/JS/main.js"></script>
 </body>
 </html>
