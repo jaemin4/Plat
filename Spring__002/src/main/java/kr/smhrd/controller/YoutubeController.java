@@ -63,6 +63,10 @@ public class YoutubeController {
 	}	  
 		
 	
+	@RequestMapping("/about.do")
+	public String about() {
+		return "about";
+	}
 	
 
 	

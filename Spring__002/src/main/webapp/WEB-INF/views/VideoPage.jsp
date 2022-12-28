@@ -421,7 +421,7 @@ body {
            		        <div class="card card-body" id = "card_screen">
                             <div class="media align-items-center align-items-lg-start text-center text-lg-left flex-column flex-lg-row">
                                 <div class="mr-2 mb-3 mb-lg-0" >
-                                	<span id = "InnerVideo"><iframe height="380px" width = "400px" src="https://www.youtube.com/embed/${list.get(0).getLec_id()}?start=120&mute=1&autoplay=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></span>
+                                	<span id = "InnerVideo"><iframe height="380px" width = "550px" src="https://www.youtube.com/embed/${list.get(0).getLec_id()}?start=120&mute=1&autoplay=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></span>
                                 </div>
 
                                 <div class="media-body">
@@ -432,7 +432,7 @@ body {
                                     <ul class="list-inline list-inline-dotted mb-3 mb-lg-2">
                                         <li class="list-inline-item"><a href="#" class="text-muted" data-abc="true">${lec_lang_list.get(0).getLec_lang()}</a></li>
                                         <li class="list-inline-item"><a href="#" class="text-muted" data-abc="true">${lec_lang_list.get(0).getLec_grammar()}</a></li>
-                                        <li class="list-inline-item"><a href="#" class="text-muted" data-abc="true">1000views</a></li>
+                                        <li class="list-inline-item"><a onclick="BookMark(${lec_lang_list.get(0).getLec_id()})" class="text-muted" data-abc="true" id = "favo">${lecid eq null ? '☆':'★'}</a></li>
                                     </ul>
                                 	
                                     <p class="mb-3" id = "screen_p">${lec_lang_list.get(0).getLec_summ()}</p>

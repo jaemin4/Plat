@@ -26,7 +26,7 @@
      <ul>
        <li><a href="LandingPage.do">Home</a></li>
        <li><a href="Python_1.do">Lectures</a></li>
-       <li><a href="#">About</a></li>
+       <li><a href="about.do">About</a></li>
   
        <button type="button"><a href ="Join_login.do">Login</a></button>
      </ul>

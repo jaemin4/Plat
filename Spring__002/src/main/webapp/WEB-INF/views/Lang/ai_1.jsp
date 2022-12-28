@@ -296,7 +296,7 @@ body {
 			  <a href="LandingPage.do">home</a>
 			  <a href="Python_1.do">lectures</a>
 			  <a href="${m_id ne null ? 'MyPage.do':'Join_login.do'}">favorites</a>
-			  <a href="#">about</a>
+			  <a href="about.do">about</a>
 			  <a onclick="location.href='logout.do'">${m_id eq null ? 'Login':'Logout'}</a>
 			</nav>
 

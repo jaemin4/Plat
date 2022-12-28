@@ -1,4 +1,4 @@
-const apiKey = 'AIzaSyB5ulhLUhTOGvdlR7I-oNgGl0JwSFZ9VNM';
+const apiKey = 'AIzaSyCuaAwdrUChwj-v6NIFVVqZxmzmnHbMyxs';
 const videoChannel = document.querySelector('#video-channel');
 const videoContainer = document.querySelector('#video-container');
 const channelId = 'UC7JbUmyD7g8JH6LvkkQuSZQ';

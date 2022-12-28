@@ -35,6 +35,7 @@ public class FavoritesController {
 			System.out.println(id+"여기는 컨트롤로에서 session을 받아옵니다");
 		
 	     	String lec_id = (String) param.get("this_id");
+	     	System.out.println(lec_id+"값을 잘 받아오니?");
 	     	
 	     	vo.setLec_id(lec_id);
 	     	vo.setMem_id(id);
@@ -46,11 +47,14 @@ public class FavoritesController {
 			if(lecid.size() == 0) {
 				System.out.println("찜하기");
 				favoritesMapper.f_insert(vo);
+				model.addAttribute("lecid",lecid);
+				System.out.println(lecid+"favoritecontroller+lecid");
 			}
 			else 
 			{
 				System.out.println("이찜");
 				favoritesMapper.f_delete(vo);
+				model.addAttribute("lecid",lecid);
 			}
 			return "VideoPage.do";
 	}
@@ -72,7 +76,7 @@ public class FavoritesController {
 			return "redirect:/Python_1.do";
 		}
 		
-
+	
 		
 		
 	}

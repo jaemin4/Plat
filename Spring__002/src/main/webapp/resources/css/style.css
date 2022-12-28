@@ -51,7 +51,7 @@ html{
 
 .header>nav>a{
     margin-left: 3%;
-    font-size:22px;
+    font-size:20px;
 
     
 }
@@ -60,7 +60,10 @@ html{
 	margin-left:7%;
 	
 }
-
+.header>nav>a{
+	margin-left:2%;
+	
+}
 
 .left{
     grid-area:left;
